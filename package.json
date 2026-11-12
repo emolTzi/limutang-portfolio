@@ -1,0 +1,22 @@
+{
+  "name": "limutang-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "李牧唐的个人主页：零依赖、零构建的静态站点。下面这些脚本只是可选的辅助工具，网站本身不需要 npm 也能运行与部署。",
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/serve.mjs",
+    "fonts": "node tools/fonts.mjs",
+    "prerender": "node tools/prerender.mjs",
+    "standalone": "node tools/standalone.mjs",
+    "refresh": "node tools/fonts.mjs && node tools/prerender.mjs && node tools/standalone.mjs"
+  },
+  "devDependencies": {
+    "@fontsource-variable/instrument-sans": "^5.2.0",
+    "@fontsource/dm-mono": "^5.2.0",
+    "@fontsource/instrument-serif": "^5.2.0",
+    "@fontsource/noto-serif-sc": "^5.2.0",
+    "esbuild": "^0.25.0",
+    "subset-font": "^2.4.0"
+  }
+}

@@ -1,0 +1,666 @@
+/**
+ * print.css — 打印 / 导出 PDF 时的样式（index.html 里以 media="print" 引入）。
+ *
+ * 目标：把这个炫技的页面变回一份干净、紧凑、黑白的纸质简历。
+ * 做法：隐藏所有舞台与外壳，取消动效状态，重排成单栏文档。
+ * 这里的规则不在任何级联层里，所以天然压过站点样式。
+ */
+
+@page {
+  size: A4;
+  margin: 11mm 14mm 11mm;
+}
+
+html,
+body {
+  background: #fff !important;
+  color: #111;
+  font-size: 9.5pt;
+  line-height: 1.6;
+}
+
+/* 舞台、外壳、纯交互的东西：全部不印 */
+.fx-field,
+.fx-flock,
+.cursor,
+.loader,
+.nav,
+.rail,
+.menu,
+.palette,
+.toast,
+.skip,
+.notice,
+.marquee,
+.toc,
+.hero__top,
+.hero__latin,
+.hero__aside,
+.orbs,
+.sec-head__rule,
+.sec-head__en,
+.sec-head__index,
+.project__en,
+.project__links,
+.project__slot,
+.facet__en,
+.skill__en,
+.rule__en,
+.edu__en,
+.edu__horizon,
+.comp-top__slot,
+.comp__work-link,
+.skills__visual,
+.portals-top__slot,
+.portal__ring,
+.portal__arrow,
+.portal__en,
+.contact__slot,
+.contact__headline,
+.footer,
+.orgchart,
+.block:has(> .labs),
+.btn,
+.sr-only {
+  display: none !important;
+}
+
+/* 取消一切进场 / 滚动状态，让所有内容原地可见 */
+*,
+*::before,
+*::after {
+  opacity: 1 !important;
+  transform: none !important;
+  translate: none !important;
+  transition: none !important;
+  animation: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+*::before {
+  background: none !important;
+}
+
+body * {
+  border-color: #c9c9c9 !important;
+  color: #111 !important;
+  background: none !important;
+  /* 屏幕版很多容器把内容居中；纸面上一律左起（新版浏览器里 justify-items 对普通块级子元素也生效） */
+  justify-items: normal !important;
+  justify-content: normal !important;
+}
+
+.mono,
+.sec-head__lede,
+.project__summary,
+.stat__note,
+.facet__text,
+.skill__text,
+.comp__work-body > p,
+.portal__desc,
+.contact__text {
+  color: #333 !important;
+}
+
+.hl {
+  font-weight: 700;
+}
+
+.wrap {
+  width: 100%;
+}
+
+.section {
+  padding-block: 0;
+  margin-top: 3.4mm;
+}
+
+/* ── 抬头 ── */
+.hero {
+  display: block;
+  min-height: 0;
+  padding: 0 0 4mm;
+  border-bottom: 1.2pt solid #111 !important;
+}
+
+.hero__center {
+  display: block;
+}
+
+.hero__name {
+  width: auto;
+  aspect-ratio: auto;
+}
+
+.hero__name span {
+  position: static;
+  display: block;
+  font-size: 30pt;
+  letter-spacing: 0.12em;
+  writing-mode: horizontal-tb;
+}
+
+.hero__role {
+  display: block;
+  margin-top: 1.5mm;
+  text-align: left;
+  writing-mode: horizontal-tb;
+}
+
+.hero__role-label {
+  display: none;
+}
+
+.hero__role-zh {
+  font-size: 13pt;
+  letter-spacing: 0.04em;
+}
+
+.hero__role-alt {
+  font-size: 9pt;
+}
+
+.hero__role-alt em {
+  font-family: inherit;
+  font-size: 1em;
+  font-style: normal;
+}
+
+.hero__foot {
+  display: block;
+  margin-top: 3mm;
+}
+
+.hero__facts {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 2mm 10mm;
+}
+
+.hero__facts dd {
+  font-size: 9pt;
+  line-height: 1.5;
+}
+
+/* ── 章节标题 ── */
+.sec-head {
+  display: block;
+  margin-bottom: 1.8mm;
+  padding-bottom: 0.8mm;
+  border-bottom: 0.6pt solid #111 !important;
+  break-after: avoid;
+}
+
+.sec-head__zh {
+  font-size: 13pt;
+  letter-spacing: 0.2em;
+}
+
+.sec-head__zh .split {
+  overflow: visible;
+}
+
+.sec-head__lede {
+  display: none;
+}
+
+/* ── 概述 ── */
+.about__lead {
+  max-width: none;
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+
+.stats {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4mm;
+  margin-top: 3mm;
+}
+
+.stat {
+  padding-top: 1.5mm;
+}
+
+.stat__value {
+  font-size: 18pt;
+}
+
+.stat__label {
+  margin-top: 0.5mm;
+  font-size: 8.5pt;
+}
+
+.stat__note {
+  font-size: 7pt;
+}
+
+/* ── 教育 ── */
+.edu {
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 4mm;
+}
+
+.edu__school,
+.edu__facts,
+.edu__campus {
+  grid-column: auto;
+}
+
+.edu__name {
+  font-size: 13pt;
+  letter-spacing: 0.08em;
+}
+
+.deflist__row {
+  grid-template-columns: 12mm 1fr;
+  gap: 2mm;
+  padding-block: 0.8mm;
+  border: 0 !important;
+}
+
+.pill {
+  padding: 0;
+  border: 0 !important;
+  font-size: 8.5pt;
+}
+
+.pill > i {
+  display: none;
+}
+
+.pill + .pill::before {
+  content: " · ";
+}
+
+/* ── 项目 ── */
+.project {
+  margin-top: 3mm;
+}
+
+.project__poster {
+  display: block;
+  min-height: 0;
+  padding: 0;
+  /* 项目抬头不和它的正文分在两页 */
+  break-inside: avoid;
+  break-after: avoid;
+}
+
+.project__intro {
+  display: block;
+}
+
+.project__kicker {
+  float: right;
+  font-size: 7.5pt;
+}
+
+.project__title {
+  font-size: 12pt;
+  letter-spacing: 0.04em;
+  break-after: avoid;
+}
+
+.project__title .line {
+  display: inline;
+  overflow: visible;
+  padding: 0;
+}
+
+.project__title .line > span {
+  display: inline;
+}
+
+.project__summary {
+  display: none;
+}
+
+.project__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 8mm;
+  width: auto;
+  margin-top: 0.5mm;
+}
+
+.project__meta > div {
+  display: flex;
+  gap: 2mm;
+  padding: 0;
+  border: 0 !important;
+}
+
+.project__status {
+  display: inline-flex;
+  margin-top: 0.5mm;
+}
+
+.project__detail {
+  padding-bottom: 0;
+}
+
+.facets {
+  margin-top: 1.5mm;
+  border: 0 !important;
+}
+
+.facet {
+  display: grid;
+  grid-template-columns: 22mm 1fr;
+  gap: 0 3mm;
+  padding-block: 0.6mm;
+  border: 0 !important;
+  break-inside: avoid;
+}
+
+.facet__head,
+.facet__text {
+  grid-column: auto;
+}
+
+.facet__no {
+  display: none;
+}
+
+.facet__label {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.facet__text {
+  line-height: 1.6;
+}
+
+.facet__metric {
+  display: none;
+}
+
+.block {
+  margin-top: 2mm;
+}
+
+.block-head {
+  display: none;
+}
+
+.demos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1mm 5mm;
+  margin-left: 25mm;
+}
+
+.demo {
+  display: inline;
+  min-height: 0;
+  padding: 0;
+  border: 0 !important;
+}
+
+.demo__no,
+.demo__state,
+.demo__meta {
+  display: none;
+}
+
+.demo__title {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 400;
+}
+
+.rules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1mm 6mm;
+  margin-left: 25mm;
+}
+
+.rule {
+  display: inline;
+  min-height: 0;
+  padding: 0;
+  border: 0 !important;
+}
+
+.rule__no {
+  display: none;
+}
+
+.rule__title {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  font-weight: 400;
+}
+
+.chips {
+  gap: 0 3mm;
+  margin-left: 25mm;
+}
+
+.chips li {
+  padding: 0;
+  border: 0 !important;
+  font-size: 8pt;
+}
+
+/* ── 竞赛 ── */
+.comp-top {
+  display: block;
+  min-height: 0;
+}
+
+.comps {
+  border: 0 !important;
+}
+
+.comp {
+  display: block;
+  padding-block: 0.9mm;
+  border: 0 !important;
+  break-inside: avoid;
+}
+
+.comp__head {
+  grid-template-columns: 1fr auto;
+  gap: 0 4mm;
+}
+
+.comp__no {
+  display: none;
+}
+
+.comp__name {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.comp__track {
+  margin-top: 0;
+  font-size: 7.5pt;
+}
+
+.comp__work {
+  display: block;
+  margin: 1mm 0 0;
+  padding: 0;
+  border: 0 !important;
+}
+
+.comp__work-head .mono {
+  display: none;
+}
+
+.comp__work-title {
+  display: inline;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  font-weight: 700;
+}
+
+.comp__work-title small {
+  display: inline;
+  margin: 0;
+  font-size: 1em;
+}
+
+.comp__work-body {
+  display: block;
+}
+
+.comp__work-body > p {
+  line-height: 1.6;
+}
+
+.flow {
+  display: none;
+}
+
+.comp__work-body .chips {
+  margin-left: 0;
+}
+
+/* ── 技能 ── */
+.skills__grid {
+  display: block;
+}
+
+.skills__list {
+  border: 0 !important;
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 30mm 1fr;
+  gap: 0 3mm;
+  padding-block: 0.5mm;
+  border: 0 !important;
+  break-inside: avoid;
+}
+
+.skill__head {
+  display: block;
+}
+
+.skill__no {
+  display: none;
+}
+
+.skill__title {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.skill__text {
+  padding: 0;
+  line-height: 1.6;
+}
+
+.skill .chips {
+  display: none;
+}
+
+/* ── 传送门：只印已接入的链接，并把地址写出来 ── */
+.portals-top {
+  display: block;
+  min-height: 0;
+}
+
+.portals-top .sec-head {
+  text-align: left;
+}
+
+.portals-top .sec-head::before {
+  display: none;
+}
+
+.portal-grid {
+  display: block;
+  padding: 0;
+}
+
+.portal-cell:has(.portal.is-soon) {
+  display: none;
+}
+
+.portal {
+  display: block;
+  min-height: 0;
+  padding: 0.5mm 0;
+  border: 0 !important;
+}
+
+.portal__top,
+.portal__desc,
+.portal__children {
+  display: none;
+}
+
+.portal__body {
+  display: inline;
+}
+
+.portal__title {
+  display: inline;
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.portal__foot {
+  display: inline;
+  padding: 0;
+  border: 0 !important;
+}
+
+.portal__url {
+  margin-left: 3mm;
+  font-size: 8.5pt;
+}
+
+/* ── 联系 ── */
+.contact__grid {
+  display: block;
+}
+
+.contact__body {
+  display: block;
+}
+
+.contact__text {
+  max-width: none;
+  font-size: 9.5pt;
+}
+
+.contact__mail {
+  margin: 0;
+}
+
+.mail {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+}
+
+.mail b {
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  font-weight: 700;
+}
+
+.contact__links {
+  display: none;
+}

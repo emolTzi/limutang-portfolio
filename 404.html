@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>页面不存在 · 李牧唐</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0a09">
+  <!-- 404 页可能出现在任意层级的路径下，所以样式全部内联，不引用任何相对路径的文件 -->
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #0b0a09;
+      --paper: #f2ebe0;
+      --paper-2: #c1b9ac;
+      --paper-3: #8f887c;
+      --amber: #ff9d2e;
+      --line: rgb(242 235 224 / 0.24);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: grid;
+      min-height: 100svh;
+      margin: 0;
+      padding: 1.5rem;
+      place-items: center;
+      background:
+        radial-gradient(48rem 32rem at 76% -6%, rgb(255 157 46 / 0.1), transparent 62%),
+        var(--ink);
+      color: var(--paper);
+      font-family: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+      line-height: 1.8;
+    }
+
+    main {
+      display: grid;
+      justify-items: start;
+      gap: 1.25rem;
+      width: min(100%, 34rem);
+    }
+
+    .code {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      color: var(--amber);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Songti SC", "STSong", "Source Han Serif SC", "Noto Serif CJK SC", "SimSun", serif;
+      font-size: clamp(2.5rem, 9vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+    }
+
+    p {
+      margin: 0;
+      color: var(--paper-2);
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--paper);
+      text-decoration: none;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    a:hover,
+    a:focus-visible {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 4px;
+    }
+
+    .orb {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 12px rgb(255 157 46 / 0.8);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="code">ERROR 404</p>
+    <h1>这一页还没有接入。</h1>
+    <p>你要找的页面不存在，或者它还在路上。回到首页，从传送门里找找已经开放的入口。</p>
+    <a id="home" href="/"><span class="orb" aria-hidden="true"></span>回到首页</a>
+  </main>
+
+  <script>
+    /* GitHub Pages 的项目站点挂在 /仓库名/ 下面：试探一下，把「回到首页」指到正确的位置。 */
+    (function () {
+      var link = document.getElementById('home');
+      var first = location.pathname.split('/')[1];
+      if (!first || !/\.github\.io$/.test(location.hostname)) return;
+      var base = '/' + first + '/';
+      fetch(base, { method: 'HEAD' })
+        .then(function (res) { if (res.ok) link.href = base; })
+        .catch(function () { /* 保持默认的根路径 */ });
+    })();
+  </script>
+</body>
+</html>
