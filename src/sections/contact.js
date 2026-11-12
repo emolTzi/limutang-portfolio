@@ -15,43 +15,28 @@ export default {
     const { headline, text } = site.contact;
     const live = Object.values(site.links)
       .filter((link) => link.url)
-      .map((link) => `<li><a ${linkAttrs(link.url)} data-magnetic="0.2"><span>${esc(link.title)}</span><i aria-hidden="true">↗</i></a></li>`)
+      .map((link) => `<li><a ${linkAttrs(link.url)}>${esc(link.title)}</a></li>`)
       .join('');
 
     return `
-    <section class="section contact" id="contact" data-cue="contact" aria-labelledby="contact-title">
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
       <div class="wrap">
         ${secHead(chapter, index)}
-        <div class="contact__grid">
-          <div class="contact__body" data-stagger>
-            <p class="contact__headline" data-reveal="mask">${headline.map((line) => `<span class="line"><span>${esc(line)}</span></span>`).join('')}</p>
-            <p class="contact__text" data-reveal>${esc(text)}</p>
-            <div class="contact__mail" data-reveal>
-              <a class="mail" href="mailto:${esc(p.email)}" data-cursor="写邮件" data-agent-target>
-                <span class="mono">邮箱</span>
-                <b>${esc(p.email)}</b>
-              </a>
-              <button type="button" class="btn" data-copy="${esc(p.email)}" data-magnetic="0.25">
-                <span class="btn__text">复制邮箱</span>
-              </button>
-            </div>
-            ${live ? `<ul class="contact__links" data-reveal>${live}</ul>` : ''}
-          </div>
-          <div class="contact__slot" data-stage-anchor aria-hidden="true"></div>
+        <p class="contact__headline">${headline.map((line) => `<span class="line">${esc(line)}</span>`).join('')}</p>
+        <p class="contact__text">${esc(text)}</p>
+        <div class="contact__mail">
+          <a class="mail" href="mailto:${esc(p.email)}">
+            <span class="mono">邮箱</span>
+            <b>${esc(p.email)}</b>
+          </a>
+          <button type="button" class="btn" data-copy="${esc(p.email)}">复制邮箱</button>
         </div>
+        ${live ? `<ul class="contact__links">${live}</ul>` : ''}
+        <footer class="footer">
+          <p>© ${esc(site.meta.year)} ${esc(p.name)} · ${esc(p.intent)}</p>
+          <a href="#top">回到顶部</a>
+        </footer>
       </div>
-
-      <footer class="footer wrap">
-        <div class="footer__row">
-          <p class="footer__sign"><span class="nav__orb" aria-hidden="true"></span>${esc(p.name)}<i>·</i>${esc(p.intent)}</p>
-          <a class="footer__top mono" href="#top">回到顶部 ↑</a>
-        </div>
-        <div class="footer__row footer__meta mono">
-          <p>© ${esc(site.meta.year)} ${esc(p.name)}</p>
-          <p class="footer__travel">本次访问，智能体随你的光标移动了 <b data-hud="travel">0.0</b> 米</p>
-          <p>以 AI 驱动开发构建 · 手写 WebGL2 粒子引擎 · 零依赖</p>
-        </div>
-      </footer>
     </section>`;
   },
 

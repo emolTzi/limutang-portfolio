@@ -6,39 +6,30 @@
   <title>李牧唐 · AI Agent 应用工程师</title>
   <meta name="description" content="李牧唐的个人主页。求职意向：AI Agent 应用工程师（智能体应用工程师）。云南大学软件学院数字媒体技术专业，方向为多智能体协作与 AI 辅助开发。">
   <meta name="author" content="李牧唐">
-  <meta name="theme-color" content="#0b0a09">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#faf9f7">
+  <meta name="color-scheme" content="light">
 
-  <!-- 分享卡片。部署后请把 og:image 换成完整网址（社交平台不认相对路径），例如 https://你的域名/assets/img/og.jpg -->
   <meta property="og:type" content="profile">
   <meta property="og:title" content="李牧唐 · AI Agent 应用工程师">
   <meta property="og:description" content="以 AI 驱动开发，用多智能体协作，把想法做成能上线、能迭代的产品。">
-  <meta property="og:image" content="./assets/img/og.jpg">
+  <meta property="og:image" content="https://emoltzi.github.io/limutang-portfolio/assets/img/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://emoltzi.github.io/limutang-portfolio/assets/img/og.jpg">
 
   <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/fonts/noto-serif-sc-900.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/instrument-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="stylesheet" href="./src/styles/fonts.css">
-  <link rel="stylesheet" href="./src/styles/tokens.css">
-  <link rel="stylesheet" href="./src/styles/base.css">
-  <link rel="stylesheet" href="./src/styles/components.css">
-  <link rel="stylesheet" href="./src/styles/chrome.css">
-  <link rel="stylesheet" href="./src/styles/sections.css">
+  <link rel="stylesheet" href="./src/styles/site.css">
   <link rel="stylesheet" href="./src/styles/print.css" media="print">
 
   <script>
-    /* 尽早执行的三件小事：标记脚本可用；识别「本地直接双击打开」；给启动过程上一道保险。 */
     (function () {
       var root = document.documentElement;
       root.classList.remove('no-js');
       root.classList.add('js');
-      // file:// 下浏览器不允许加载 ES 模块：直接展示静态版，并提示如何看完整效果
       if (location.protocol === 'file:') root.classList.add('is-static'); // standalone:strip
-      // 12 秒内主脚本还没启动（断网等）：回退到静态内容，不让访客对着加载页干等
-      setTimeout(function () {
-        if (!window.__lmt) root.classList.add('is-static');
-      }, 12000);
     })();
   </script>
 
@@ -67,818 +58,561 @@
 }
 </script>
 <!-- /prerender:schema -->
-
-  <link rel="modulepreload" href="./src/main.js">
-  <link rel="modulepreload" href="./src/content/site.js">
-  <link rel="modulepreload" href="./src/core/dom.js">
-  <link rel="modulepreload" href="./src/core/env.js">
-  <link rel="modulepreload" href="./src/core/bus.js">
-  <link rel="modulepreload" href="./src/core/math.js">
-  <link rel="modulepreload" href="./src/core/ticker.js">
-  <link rel="modulepreload" href="./src/core/pointer.js">
-  <link rel="modulepreload" href="./src/core/scroll.js">
-  <link rel="modulepreload" href="./src/fx/stage.js">
-  <link rel="modulepreload" href="./src/fx/field.js">
-  <link rel="modulepreload" href="./src/fx/shaders.js">
-  <link rel="modulepreload" href="./src/fx/formations.js">
-  <link rel="modulepreload" href="./src/fx/director.js">
-  <link rel="modulepreload" href="./src/fx/cues.js">
-  <link rel="modulepreload" href="./src/fx/flock.js">
-  <link rel="modulepreload" href="./src/sections/index.js">
-  <link rel="modulepreload" href="./src/sections/shared.js">
-  <link rel="modulepreload" href="./src/sections/hero.js">
-  <link rel="modulepreload" href="./src/sections/about.js">
-  <link rel="modulepreload" href="./src/sections/education.js">
-  <link rel="modulepreload" href="./src/sections/projects.js">
-  <link rel="modulepreload" href="./src/sections/competitions.js">
-  <link rel="modulepreload" href="./src/sections/skills.js">
-  <link rel="modulepreload" href="./src/sections/portals.js">
-  <link rel="modulepreload" href="./src/sections/contact.js">
-  <link rel="modulepreload" href="./src/sections/widgets/orgchart.js">
-  <link rel="modulepreload" href="./src/sections/widgets/wavelab.js">
-  <link rel="modulepreload" href="./src/ui/loader.js">
-  <link rel="modulepreload" href="./src/ui/nav.js">
-  <link rel="modulepreload" href="./src/ui/palette.js">
-  <link rel="modulepreload" href="./src/ui/motion.js">
-  <link rel="modulepreload" href="./src/ui/interact.js">
-  <link rel="modulepreload" href="./src/ui/cursor.js">
-  <link rel="modulepreload" href="./src/ui/hud.js">
-  <link rel="modulepreload" href="./src/ui/toast.js">
 </head>
 <body>
   <a class="skip" href="#app">跳到正文</a>
 
   <p class="notice">
-    当前显示的是静态版本（没有粒子与动效）。如果你是直接双击打开的本地文件：浏览器不允许这样加载脚本模块，
+    当前显示的是静态版本。如果你是直接双击打开的本地文件：浏览器不允许这样加载脚本模块，
     请打开同目录下的 <a href="./standalone.html">standalone.html</a>（离线单文件版），
     或在本目录运行 <code>node tools/serve.mjs</code> 后访问 <code>http://localhost:8080</code>。
   </p>
 
-  <!-- 粒子舞台（WebGL2），固定在最底层 -->
-  <canvas class="fx-field" id="fx-field" aria-hidden="true"></canvas>
-
-  <!-- 开场加载层：脚本下载期间就能显示 -->
-  <div class="loader" id="loader" role="status" aria-label="正在加载">
-    <div class="loader__inner">
-      <div class="loader__orbs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <p class="loader__count" aria-hidden="true"><b data-loader-count>00</b><span> / <span data-loader-total>20</span></span></p>
-      <p class="mono">正在唤醒智能体编队</p>
-    </div>
-    <p class="loader__brand">李牧唐<span class="mono">Portfolio 2026</span></p>
-  </div>
-
-  <!-- 导航、章节轨、菜单。运行时由 src/ui/nav.js 按 site.js 重新生成；这里的内容是 tools/prerender.mjs 写入的静态降级版 -->
   <div id="chrome"><!-- prerender:chrome -->
-<header class="nav" id="nav">
-      <a class="nav__brand" href="#top" aria-label="李牧唐，回到顶部">
-        <span class="nav__orb" aria-hidden="true"></span>
-        <span class="nav__name">李牧唐</span>
-        <span class="nav__role">AI Agent Application Engineer</span>
+<header class="site-header" id="nav">
+      <a class="brand" href="#top" aria-label="李牧唐，回到顶部">
+        <span class="brand__name">李牧唐</span>
+        <span class="brand__role">AI Agent 应用工程师</span>
       </a>
-      <nav class="nav__links" aria-label="章节导航"><a href="#about" data-nav="0"><span class="nav__num">01</span><span class="nav__label">概述</span></a><a href="#education" data-nav="1"><span class="nav__num">02</span><span class="nav__label">教育</span></a><a href="#projects" data-nav="2"><span class="nav__num">03</span><span class="nav__label">项目</span></a><a href="#competitions" data-nav="3"><span class="nav__num">04</span><span class="nav__label">竞赛</span></a><a href="#skills" data-nav="4"><span class="nav__num">05</span><span class="nav__label">技能</span></a><a href="#portals" data-nav="5"><span class="nav__num">06</span><span class="nav__label">传送门</span></a><a href="#contact" data-nav="6"><span class="nav__num">07</span><span class="nav__label">联系</span></a></nav>
-      <div class="nav__tools">
-        <button type="button" class="nav__cmd" data-palette-open aria-haspopup="dialog">
-          <span>指令</span><kbd>Ctrl K</kbd>
-        </button>
-        <button type="button" class="nav__burger" data-menu-toggle aria-expanded="false" aria-controls="menu" aria-label="打开菜单">
-          <i></i><i></i>
-        </button>
-      </div>
+      <nav class="nav-links" aria-label="章节导航"><a href="#about" data-nav="0">概述</a><a href="#education" data-nav="1">教育</a><a href="#projects" data-nav="2">项目</a><a href="#competitions" data-nav="3">竞赛</a><a href="#skills" data-nav="4">技能</a><a href="#portals" data-nav="5">传送门</a><a href="#contact" data-nav="6">联系</a></nav>
+      <button type="button" class="nav-toggle" data-menu-toggle aria-expanded="false" aria-controls="nav-panel">菜单</button>
     </header>
-
-    <nav class="rail" aria-label="章节进度">
-      <ol><li><a href="#about" data-rail="0" aria-label="01 概述"><span class="rail__label">概述</span><i class="rail__orb"></i></a></li><li><a href="#education" data-rail="1" aria-label="02 教育"><span class="rail__label">教育</span><i class="rail__orb"></i></a></li><li><a href="#projects" data-rail="2" aria-label="03 项目"><span class="rail__label">项目</span><i class="rail__orb"></i></a></li><li><a href="#competitions" data-rail="3" aria-label="04 竞赛"><span class="rail__label">竞赛</span><i class="rail__orb"></i></a></li><li><a href="#skills" data-rail="4" aria-label="05 技能"><span class="rail__label">技能</span><i class="rail__orb"></i></a></li><li><a href="#portals" data-rail="5" aria-label="06 传送门"><span class="rail__label">传送门</span><i class="rail__orb"></i></a></li><li><a href="#contact" data-rail="6" aria-label="07 联系"><span class="rail__label">联系</span><i class="rail__orb"></i></a></li></ol>
-    </nav>
-
-    <div class="menu" id="menu" hidden>
-      <ol class="menu__list"><li style="--i:0"><a href="#about"><span class="menu__num">01</span><span class="menu__zh">概述</span><span class="menu__en">Overview</span></a></li><li style="--i:1"><a href="#education"><span class="menu__num">02</span><span class="menu__zh">教育</span><span class="menu__en">Education</span></a></li><li style="--i:2"><a href="#projects"><span class="menu__num">03</span><span class="menu__zh">项目</span><span class="menu__en">Projects</span></a></li><li style="--i:3"><a href="#competitions"><span class="menu__num">04</span><span class="menu__zh">竞赛</span><span class="menu__en">Competitions</span></a></li><li style="--i:4"><a href="#skills"><span class="menu__num">05</span><span class="menu__zh">技能</span><span class="menu__en">Skills</span></a></li><li style="--i:5"><a href="#portals"><span class="menu__num">06</span><span class="menu__zh">传送门</span><span class="menu__en">Portals</span></a></li><li style="--i:6"><a href="#contact"><span class="menu__num">07</span><span class="menu__zh">联系</span><span class="menu__en">Contact</span></a></li></ol>
-      <p class="menu__foot">AI Agent 应用工程师 · 云南大学</p>
-    </div>
+    <div class="nav-panel" id="nav-panel" hidden><a href="#about" data-panel="0"><span class="mono">01</span> 概述</a><a href="#education" data-panel="1"><span class="mono">02</span> 教育</a><a href="#projects" data-panel="2"><span class="mono">03</span> 项目</a><a href="#competitions" data-panel="3"><span class="mono">04</span> 竞赛</a><a href="#skills" data-panel="4"><span class="mono">05</span> 技能</a><a href="#portals" data-panel="5"><span class="mono">06</span> 传送门</a><a href="#contact" data-panel="6"><span class="mono">07</span> 联系</a></div>
 <!-- /prerender:chrome --></div>
 
-  <!-- 全部章节。同上：运行时由 src/sections 重新生成 -->
   <main id="app"><!-- prerender:app -->
-<section class="hero" id="top" data-cue="hero" aria-label="首屏">
-      <div class="hero__top" data-intro style="--d:0.5s">
-        <p class="mono"><span data-scramble>PORTFOLIO</span> <i>/</i> 2026</p>
-        <p class="mono hero__clock"><span data-hud="clock">--:--:--</span> <i>/</i> UTC+8</p>
-      </div>
-
-      <div class="hero__center">
-        <p class="hero__latin mono" data-intro style="--d:0.7s" aria-hidden="true">Li Mutang</p>
-        <h1 class="hero__name" data-stage-anchor><span>李牧唐</span></h1>
-        <div class="hero__role" data-intro style="--d:1.1s">
-          <p class="hero__role-label mono">求职意向</p>
+<section class="hero" id="top" aria-label="首屏">
+      <div class="wrap">
+        <p class="hero__eyebrow">个人主页 · 2026</p>
+        <h1 class="hero__name">李牧唐</h1>
+        <p class="hero__latin" lang="en">Li Mutang</p>
+        <div class="hero__role">
+          <p class="hero__role-label">求职意向</p>
           <p class="hero__role-zh">AI Agent 应用工程师</p>
           <p class="hero__role-alt">智能体应用工程师<i>·</i><em lang="en">AI Agent Application Engineer</em></p>
         </div>
-      </div>
-
-      <div class="hero__foot">
-        <dl class="hero__facts" data-intro style="--d:1.4s">
+        <dl class="hero__facts">
           <div>
-            <dt class="mono">院校</dt>
+            <dt>院校</dt>
             <dd>云南大学 · 软件学院<br>数字媒体技术专业 · 2026 级本科</dd>
           </div>
           <div>
-            <dt class="mono">方向</dt>
+            <dt>方向</dt>
             <dd>多智能体协作<br>AI 辅助开发</dd>
           </div>
           <div class="hero__facts-wide">
-            <dt class="mono">做事方式</dt>
+            <dt>做事方式</dt>
             <dd>以 AI 驱动开发，用多智能体协作，把想法做成能上线、能迭代的产品。</dd>
           </div>
         </dl>
-
-        <div class="hero__aside" data-intro style="--d:1.7s">
-          <ul class="hud mono" aria-label="实时读数">
-            <li><span>GPU 粒子</span><b data-hud="particles">—</b></li>
-            <li><span>帧率</span><b data-hud="fps">—</b></li>
-            <li class="hud__agents"><span>跟随你的智能体</span><b data-hud="agents">—</b></li>
-          </ul>
-          <p class="hero__hint mono">按住鼠标 · 聚能<i>/</i>松开 · 释放</p>
-          <a class="hero__scroll" href="#about" aria-label="向下滚动到概述">
-            <span class="mono">向下滚动</span><i aria-hidden="true"></i>
-          </a>
-        </div>
+        <p class="hero__cta">
+          <a class="btn" href="mailto:tziquantum@gmail.com">tziquantum@gmail.com</a>
+          <a class="btn" href="#contact">联系</a>
+        </p>
       </div>
     </section>
 
-    <section class="section about" id="about" data-cue="about" aria-labelledby="about-title">
+    <section class="section about" id="about" aria-labelledby="about-title">
       <div class="wrap">
         
-    <header class="sec-head" data-stagger>
-      <p class="sec-head__index mono" data-reveal>
-        <span class="orbs" aria-hidden="true"><i class="is-lit"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-        <span>01 <i>/</i> 07</span>
-      </p>
+    <header class="sec-head">
+      <p class="sec-head__index">01 <i>/</i> 07</p>
       <h2 class="sec-head__title" id="about-title">
-        <span class="sec-head__zh" data-split data-reveal="chars">概述</span>
-        <span class="sec-head__en" data-reveal>Overview</span>
+        <span class="sec-head__zh">概述</span>
+        <span class="sec-head__en" lang="en">Overview</span>
       </h2>
-      <span class="sec-head__rule" data-reveal="line" aria-hidden="true"></span>
       
     </header>
-        <p class="about__lead" data-illuminate><strong class="hl">网络与 AI 复合型人才。</strong>熟练运用 Codex、Claude Code、DeepSeek 等 AI 工具和 GitHub、Cloudflare 等网络平台，擅长以 <strong class="hl">AI 驱动开发</strong>、用<strong class="hl">多智能体协作</strong>把想法快速做成能上线、能迭代的产品。独立发起并运营 Minecraft 魔改服务器<strong class="hl">「祈愿龙珠」</strong>，从模组开发、服务器运维、客户端分发到社区运营全链路一人打通，<strong class="hl">已实现盈利</strong>；日常以<strong class="hl">「一人公司（OPC）」</strong>模式指挥<strong class="hl">约 20 个 AI bot</strong> 协同工作。</p>
-        <ul class="stats" data-stagger>
-        <li class="stat" data-reveal>
+        <p class="about__lead"><strong class="hl">网络与 AI 复合型人才。</strong>熟练运用 Codex、Claude Code、DeepSeek 等 AI 工具和 GitHub、Cloudflare 等网络平台，擅长以 <strong class="hl">AI 驱动开发</strong>、用<strong class="hl">多智能体协作</strong>把想法快速做成能上线、能迭代的产品。独立发起并运营 Minecraft 魔改服务器<strong class="hl">「祈愿龙珠」</strong>，从模组开发、服务器运维、客户端分发到社区运营全链路一人打通，<strong class="hl">已实现盈利</strong>；日常以<strong class="hl">「一人公司（OPC）」</strong>模式指挥<strong class="hl">约 20 个 AI bot</strong> 协同工作。</p>
+        <ul class="stats">
+        <li class="stat">
           <p class="stat__value">
-            <span class="stat__affix">≈</span><span data-count="20">20</span>
+            <span class="stat__affix">≈</span>20
           </p>
           <p class="stat__label">个 AI bot 协同工作</p>
-          <p class="stat__note mono">一人公司（OPC）模式</p>
+          <p class="stat__note">一人公司（OPC）模式</p>
         </li>
-        <li class="stat" data-reveal>
+        <li class="stat">
           <p class="stat__value">
-            <span data-count="3000">3000</span><span class="stat__affix">+</span>
+            3000<span class="stat__affix">+</span>
           </p>
           <p class="stat__label">例自动化测试</p>
-          <p class="stat__note mono">JUnit · Forge GameTest</p>
+          <p class="stat__note">JUnit · Forge GameTest</p>
         </li>
-        <li class="stat" data-reveal>
+        <li class="stat">
           <p class="stat__value">
-            <span data-count="450">450</span>
+            450
           </p>
           <p class="stat__label">封老玩家召回邮件</p>
-          <p class="stat__note mono">分 9 批发送</p>
+          <p class="stat__note">分 9 批发送</p>
         </li>
-        <li class="stat" data-reveal>
+        <li class="stat">
           <p class="stat__value">
-            <span data-count="6">6</span>
+            6
           </p>
           <p class="stat__label">个交互演示主题</p>
-          <p class="stat__note mono">《医用物理学》数字教材</p>
+          <p class="stat__note">《医用物理学》数字教材</p>
         </li></ul>
       </div>
     </section>
 
-    <section class="section education" id="education" data-cue="education" aria-labelledby="education-title">
+    <section class="section education" id="education" aria-labelledby="education-title">
       <div class="wrap">
         
-    <header class="sec-head" data-stagger>
-      <p class="sec-head__index mono" data-reveal>
-        <span class="orbs" aria-hidden="true"><i class="is-lit"></i><i class="is-lit"></i><i></i><i></i><i></i><i></i><i></i></span>
-        <span>02 <i>/</i> 07</span>
-      </p>
+    <header class="sec-head">
+      <p class="sec-head__index">02 <i>/</i> 07</p>
       <h2 class="sec-head__title" id="education-title">
-        <span class="sec-head__zh" data-split data-reveal="chars">教育</span>
-        <span class="sec-head__en" data-reveal>Education</span>
+        <span class="sec-head__zh">教育</span>
+        <span class="sec-head__en" lang="en">Education</span>
       </h2>
-      <span class="sec-head__rule" data-reveal="line" aria-hidden="true"></span>
       
     </header>
         <div class="edu">
-          <div class="edu__school" data-reveal>
+          <div class="edu__school">
             <h3 class="edu__name">云南大学</h3>
             <p class="edu__en" lang="en">Yunnan University</p>
-            <span class="pill pill--jade is-live"><i></i>在读</span>
+            <span class="pill">在读</span>
           </div>
-          <dl class="deflist edu__facts" data-stagger><div class="deflist__row" data-reveal><dt class="mono">学院</dt><dd>软件学院</dd></div><div class="deflist__row" data-reveal><dt class="mono">专业</dt><dd>数字媒体技术专业</dd></div><div class="deflist__row" data-reveal><dt class="mono">学历</dt><dd>本科</dd></div><div class="deflist__row" data-reveal><dt class="mono">年级</dt><dd>2026 级</dd></div></dl>
-          <dl class="deflist edu__campus" data-stagger><div class="deflist__row" data-reveal><dt class="mono">职务</dt><dd>班级学习委员</dd></div><div class="deflist__row" data-reveal><dt class="mono">社团</dt><dd>申请云南大学数字交互技术社团（程序方向）、游戏开发社团中</dd></div></dl>
+          <dl class="deflist edu__facts"><div class="deflist__row"><dt>学院</dt><dd>软件学院</dd></div><div class="deflist__row"><dt>专业</dt><dd>数字媒体技术专业</dd></div><div class="deflist__row"><dt>学历</dt><dd>本科</dd></div><div class="deflist__row"><dt>年级</dt><dd>2026 级</dd></div></dl>
+          <dl class="deflist edu__campus"><div class="deflist__row"><dt>职务</dt><dd>班级学习委员</dd></div><div class="deflist__row"><dt>社团</dt><dd>申请云南大学数字交互技术社团（程序方向）、游戏开发社团中</dd></div></dl>
         </div>
       </div>
-      <div class="edu__horizon" data-stage-anchor aria-hidden="true"></div>
     </section>
 
     <section class="section projects" id="projects" aria-labelledby="projects-title">
-      <div class="wrap" data-cue="about">
+      <div class="wrap">
         
-    <header class="sec-head" data-stagger>
-      <p class="sec-head__index mono" data-reveal>
-        <span class="orbs" aria-hidden="true"><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i></i><i></i><i></i><i></i></span>
-        <span>03 <i>/</i> 07</span>
-      </p>
+    <header class="sec-head">
+      <p class="sec-head__index">03 <i>/</i> 07</p>
       <h2 class="sec-head__title" id="projects-title">
-        <span class="sec-head__zh" data-split data-reveal="chars">项目</span>
-        <span class="sec-head__en" data-reveal>Projects</span>
+        <span class="sec-head__zh">项目</span>
+        <span class="sec-head__en" lang="en">Projects</span>
       </h2>
-      <span class="sec-head__rule" data-reveal="line" aria-hidden="true"></span>
-      <p class="sec-head__lede" data-reveal>三个项目，一条主线：以 AI 驱动开发，把想法做成能上线、能迭代的产品。</p>
+      <p class="sec-head__lede">三个项目，一条主线：以 AI 驱动开发，把想法做成能上线、能迭代的产品。</p>
     </header>
-        <ol class="toc" data-stagger><li data-reveal><a href="#project-dragonmine"><span class="mono">P/01</span><b>祈愿龙珠</b><span class="mono">个人独立项目</span><i aria-hidden="true">↓</i></a></li><li data-reveal><a href="#project-textbook"><span class="mono">P/02</span><b>《医用物理学》数字教材</b><span class="mono">交互演示制作</span><i aria-hidden="true">↓</i></a></li><li data-reveal><a href="#project-agents"><span class="mono">P/03</span><b>多智能体bot 团队</b><span class="mono">自主搭建</span><i aria-hidden="true">↓</i></a></li></ol>
-      </div>
-      
+        <ol class="toc"><li><a href="#project-dragonmine"><span class="mono">01</span><b>祈愿龙珠</b><span class="mono">个人独立项目</span></a></li><li><a href="#project-textbook"><span class="mono">02</span><b>《医用物理学》数字教材</b><span class="mono">交互演示制作</span></a></li><li><a href="#project-agents"><span class="mono">03</span><b>多智能体bot 团队</b><span class="mono">自主搭建</span></a></li></ol>
+        
     <article class="project" id="project-dragonmine" aria-labelledby="project-dragonmine-title">
-      <div class="project__poster wrap" data-cue="orbs">
-        <div class="project__intro" data-stagger>
-          <p class="project__kicker mono" data-reveal><b>P/01</b>个人独立项目</p>
-          <h3 class="project__title" id="project-dragonmine-title" data-reveal="mask"><span class="line"><span>祈愿龙珠</span></span></h3>
-          <p class="project__en" lang="en" data-reveal>DragonMine Z</p>
-          <p class="project__summary" data-reveal>基于 Minecraft 1.20.1 的龙珠主题魔改服务器，从模组开发到社区运营全链路一人打通。</p>
-          <dl class="project__meta" data-reveal><div><dt class="mono">角色</dt><dd>发起人 / 负责人</dd></div><div><dt class="mono">性质</dt><dd>个人项目，与任何社团无关</dd></div></dl>
-          <p class="project__status" data-reveal><span class="pill pill--amber"><i></i>已实现盈利</span><span class="pill pill--jade is-live"><i></i>持续运营中</span></p>
-          <div class="project__links" data-reveal><span class="btn is-soon" aria-disabled="true" data-cursor="待接入"><span class="btn__text">祈愿龙珠</span><span class="btn__tag mono">待接入</span></span><a class="btn" href="https://space.bilibili.com/487167344" target="_blank" rel="noopener noreferrer" data-magnetic="0.25"><span class="btn__text">B 站主页</span><span class="btn__arrow" aria-hidden="true">↗</span></a></div>
-        </div>
-        <div class="project__slot" data-stage-anchor aria-hidden="true"></div>
-      </div>
-
-      <div class="project__detail wrap" data-cue="orbs" data-cue-mode="backdrop">
-        <ol class="facets" data-stagger>
-      <li class="facet" data-reveal data-spot>
+      <p class="project__kicker"><b>01</b>个人独立项目</p>
+      <h3 class="project__title" id="project-dragonmine-title"><span class="line">祈愿龙珠</span></h3>
+      <p class="project__en" lang="en">DragonMine Z</p>
+      <p class="project__summary">基于 Minecraft 1.20.1 的龙珠主题魔改服务器，从模组开发到社区运营全链路一人打通。</p>
+      <dl class="project__meta"><div><dt>角色</dt><dd>发起人 / 负责人</dd></div><div><dt>性质</dt><dd>个人项目，与任何社团无关</dd></div></dl>
+      <p class="project__status"><span class="pill pill--amber">已实现盈利</span><span class="pill">持续运营中</span></p>
+      <div class="project__links"><span class="btn is-soon" aria-disabled="true"><span class="btn__text">祈愿龙珠</span><span class="btn__tag">待接入</span></span><a class="btn" href="https://space.bilibili.com/487167344" target="_blank" rel="noopener noreferrer"><span class="btn__text">B 站主页</span><span class="btn__arrow" aria-hidden="true">↗</span></a></div>
+      <ol class="facets">
+      <li class="facet">
         <div class="facet__head">
           <span class="facet__no mono">01</span>
           <h4 class="facet__label">产品</h4>
-          <span class="facet__en mono" lang="en">Product</span>
+          <span class="facet__en" lang="en">Product</span>
         </div>
         <p class="facet__text">基于 Minecraft 1.20.1 的龙珠主题魔改服务器（Mohist / Forge 混合端），含自研 Java 模组、玩法与任务系统、生产服和客户端整合包；个人项目，与任何社团无关。</p>
-        <p class="facet__metric"><b>1.20.1</b><span class="mono">Minecraft 版本</span></p>
+        <p class="facet__metric"><b>1.20.1</b><span>Minecraft 版本</span></p>
       </li>
-      <li class="facet" data-reveal data-spot>
+      <li class="facet">
         <div class="facet__head">
           <span class="facet__no mono">02</span>
           <h4 class="facet__label">AI 驱动开发</h4>
-          <span class="facet__en mono" lang="en">AI-Driven Development</span>
+          <span class="facet__en" lang="en">AI-Driven Development</span>
         </div>
         <p class="facet__text">以 Codex（后端）、Claude Code（前端）为开发主力，本人负责需求拆解、方案决策、实机测试与验收；以 JUnit 与 Forge GameTest 自动化测试作为合并门槛，全量测试达 3000 余例。</p>
-        <p class="facet__metric"><b>3000+</b><span class="mono">全量测试用例</span></p>
+        <p class="facet__metric"><b>3000+</b><span>全量测试用例</span></p>
       </li>
-      <li class="facet" data-reveal data-spot>
+      <li class="facet">
         <div class="facet__head">
           <span class="facet__no mono">03</span>
           <h4 class="facet__label">运维与分发</h4>
-          <span class="facet__en mono" lang="en">Ops &amp; Delivery</span>
+          <span class="facet__en" lang="en">Ops &amp; Delivery</span>
         </div>
         <p class="facet__text">在 Ubuntu 服务器上以翼龙（Pterodactyl）面板 + Wings / Docker 托管生产服，负责部署、备份、巡检与日志排查，版本迭代至 qy0.1.4；代码以 GitHub 分支管理，客户端更新包经阿里云 OSS 分电脑 / 手机渠道分发。</p>
-        <p class="facet__metric"><b>qy0.1.4</b><span class="mono">当前版本</span></p>
+        <p class="facet__metric"><b>qy0.1.4</b><span>当前版本</span></p>
       </li>
-      <li class="facet" data-reveal data-spot>
+      <li class="facet">
         <div class="facet__head">
           <span class="facet__no mono">04</span>
           <h4 class="facet__label">社区运营</h4>
-          <span class="facet__en mono" lang="en">Community</span>
+          <span class="facet__en" lang="en">Community</span>
         </div>
         <p class="facet__text">QQ 群接入 AstrBot + NapCat 机器人并定期汇总玩家反馈；开展老玩家召回，分 9 批发送召回邮件 450 封。</p>
-        <p class="facet__metric"><b>450</b><span class="mono">封召回邮件 · 9 批</span></p>
+        <p class="facet__metric"><b>450</b><span>封召回邮件 · 9 批</span></p>
       </li></ol>
-        
-        
-        
-        <div class="block"><header class="block-head" data-reveal><h4>技术与工具</h4></header><div data-reveal><ul class="chips"><li>Java 17</li><li>Minecraft Forge 1.20.1</li><li>Mohist</li><li>Gradle</li><li>JUnit</li><li>GameTest</li><li>Ubuntu</li><li>Pterodactyl</li><li>Wings / Docker</li><li>GitHub</li><li>阿里云 OSS</li><li>AstrBot</li><li>NapCat</li><li>Codex</li><li>Claude Code</li></ul></div></div>
-      </div>
+      
+      
+      <div class="block"><header class="block-head"><h4>技术与工具</h4></header><ul class="chips"><li>Java 17</li><li>Minecraft Forge 1.20.1</li><li>Mohist</li><li>Gradle</li><li>JUnit</li><li>GameTest</li><li>Ubuntu</li><li>Pterodactyl</li><li>Wings / Docker</li><li>GitHub</li><li>阿里云 OSS</li><li>AstrBot</li><li>NapCat</li><li>Codex</li><li>Claude Code</li></ul></div>
     </article>
-    <article class="project project--flip" id="project-textbook" aria-labelledby="project-textbook-title">
-      <div class="project__poster wrap" data-cue="wave">
-        <div class="project__intro" data-stagger>
-          <p class="project__kicker mono" data-reveal><b>P/02</b>交互演示制作<i>·</i>哈尔滨医科大学</p>
-          <h3 class="project__title" id="project-textbook-title" data-reveal="mask"><span class="line"><span>《医用物理学》</span></span><span class="line"><span>数字教材</span></span></h3>
-          <p class="project__en" lang="en" data-reveal>Medical Physics · Interactive Demos</p>
-          <p class="project__summary" data-reveal>为教材制作流体力学与振动波动的交互演示网页，每页为单文件、离线可用。</p>
-          <dl class="project__meta" data-reveal><div><dt class="mono">角色</dt><dd>投稿者之一</dd></div><div><dt class="mono">时间</dt><dd>2026</dd></div></dl>
-          
-          <div class="project__links" data-reveal><span class="btn is-soon" aria-disabled="true" data-cursor="待接入"><span class="btn__text">数字教材</span><span class="btn__tag mono">待接入</span></span></div>
-        </div>
-        <div class="project__slot" data-stage-anchor aria-hidden="true"></div>
-      </div>
-
-      <div class="project__detail wrap" data-cue="wave" data-cue-mode="backdrop">
-        <ol class="facets" data-stagger>
-      <li class="facet" data-reveal data-spot>
+    <article class="project" id="project-textbook" aria-labelledby="project-textbook-title">
+      <p class="project__kicker"><b>02</b>交互演示制作<i>·</i>哈尔滨医科大学</p>
+      <h3 class="project__title" id="project-textbook-title"><span class="line">《医用物理学》</span><span class="line">数字教材</span></h3>
+      <p class="project__en" lang="en">Medical Physics · Interactive Demos</p>
+      <p class="project__summary">为教材制作流体力学与振动波动的交互演示网页，每页为单文件、离线可用。</p>
+      <dl class="project__meta"><div><dt>角色</dt><dd>投稿者之一</dd></div><div><dt>时间</dt><dd>2026</dd></div></dl>
+      
+      <div class="project__links"><span class="btn is-soon" aria-disabled="true"><span class="btn__text">数字教材</span><span class="btn__tag">待接入</span></span></div>
+      <ol class="facets">
+      <li class="facet">
         <div class="facet__head">
           <span class="facet__no mono">01</span>
           <h4 class="facet__label">内容</h4>
-          <span class="facet__en mono" lang="en">Content</span>
+          <span class="facet__en" lang="en">Content</span>
         </div>
         <p class="facet__text">为教材制作流体力学与振动波动的交互演示网页——泊肃叶定律、文丘里流量计、皮托管、虹吸现象（均含 2D / 3D 模型）、多普勒效应、简谐振动的合成。</p>
-        <p class="facet__metric"><b>6</b><span class="mono">个演示主题</span></p>
+        <p class="facet__metric"><b>6</b><span>个演示主题</span></p>
       </li>
-      <li class="facet" data-reveal data-spot>
+      <li class="facet">
         <div class="facet__head">
           <span class="facet__no mono">02</span>
           <h4 class="facet__label">技术</h4>
-          <span class="facet__en mono" lang="en">Technology</span>
+          <span class="facet__en" lang="en">Technology</span>
         </div>
         <p class="facet__text">HTML5 Canvas + Three.js（WebGL）三维建模，KaTeX 渲染公式；以 Node.js 脚本完成资源内联、署名注入与自动化校验，每页为单文件、离线可用。</p>
-        <p class="facet__metric"><b>1</b><span class="mono">个文件一页 · 离线可用</span></p>
+        <p class="facet__metric"><b>1</b><span>个文件一页 · 离线可用</span></p>
       </li></ol>
-        
+      
     <div class="block">
-      <header class="block-head" data-reveal><h4>演示清单</h4><p class="mono">6 个主题 · 接入后可直接打开</p></header>
-      <ul class="demos" data-stagger><li data-reveal><div class="demo is-soon" data-spot>
-        <span class="demo__no mono">D/01</span>
+      <header class="block-head"><h4>演示清单</h4><p>6 个主题 · 接入后可直接打开</p></header>
+      <ul class="demos"><li><div class="demo is-soon">
+        <span class="demo__no mono">01</span>
         <span class="demo__title">泊肃叶定律</span>
-        <span class="demo__meta mono">流体力学 · 2D / 3D</span>
-        <span class="demo__state mono">待接入</span></div></li><li data-reveal><div class="demo is-soon" data-spot>
-        <span class="demo__no mono">D/02</span>
+        <span class="demo__meta">流体力学 · 2D / 3D</span>
+        <span class="demo__state">待接入</span></div></li><li><div class="demo is-soon">
+        <span class="demo__no mono">02</span>
         <span class="demo__title">文丘里流量计</span>
-        <span class="demo__meta mono">流体力学 · 2D / 3D</span>
-        <span class="demo__state mono">待接入</span></div></li><li data-reveal><div class="demo is-soon" data-spot>
-        <span class="demo__no mono">D/03</span>
+        <span class="demo__meta">流体力学 · 2D / 3D</span>
+        <span class="demo__state">待接入</span></div></li><li><div class="demo is-soon">
+        <span class="demo__no mono">03</span>
         <span class="demo__title">皮托管</span>
-        <span class="demo__meta mono">流体力学 · 2D / 3D</span>
-        <span class="demo__state mono">待接入</span></div></li><li data-reveal><div class="demo is-soon" data-spot>
-        <span class="demo__no mono">D/04</span>
+        <span class="demo__meta">流体力学 · 2D / 3D</span>
+        <span class="demo__state">待接入</span></div></li><li><div class="demo is-soon">
+        <span class="demo__no mono">04</span>
         <span class="demo__title">虹吸现象</span>
-        <span class="demo__meta mono">流体力学 · 2D / 3D</span>
-        <span class="demo__state mono">待接入</span></div></li><li data-reveal><div class="demo is-soon" data-spot>
-        <span class="demo__no mono">D/05</span>
+        <span class="demo__meta">流体力学 · 2D / 3D</span>
+        <span class="demo__state">待接入</span></div></li><li><div class="demo is-soon">
+        <span class="demo__no mono">05</span>
         <span class="demo__title">多普勒效应</span>
-        <span class="demo__meta mono">振动波动</span>
-        <span class="demo__state mono">待接入</span></div></li><li data-reveal><div class="demo is-soon" data-spot>
-        <span class="demo__no mono">D/06</span>
+        <span class="demo__meta">振动波动</span>
+        <span class="demo__state">待接入</span></div></li><li><div class="demo is-soon">
+        <span class="demo__no mono">06</span>
         <span class="demo__title">简谐振动的合成</span>
-        <span class="demo__meta mono">振动波动</span>
-        <span class="demo__state mono">待接入</span></div></li></ul>
+        <span class="demo__meta">振动波动</span>
+        <span class="demo__state">待接入</span></div></li></ul>
     </div>
-        
-    <div class="block">
-      <header class="block-head" data-reveal><h4>波动实验台</h4><p class="mono">本站即兴重绘，并非教材原页 · 把鼠标移进去</p></header>
-      <div class="labs" data-stagger>
-        <figure class="lab" data-lab="doppler" data-reveal data-no-charge>
-          <canvas aria-label="多普勒效应演示：移动的波源向四周发出波面"></canvas>
-          <figcaption>
-            <b>多普勒效应</b>
-            <span>光标就是波源。移动得越快，前方的波面挤得越紧。</span>
-            <output class="mono" data-lab-readout>Ma 0.00</output>
-          </figcaption>
-        </figure>
-        <figure class="lab" data-lab="lissajous" data-reveal data-no-charge>
-          <canvas aria-label="简谐振动的合成演示：两个相互垂直的简谐振动合成李萨如图形"></canvas>
-          <figcaption>
-            <b>简谐振动的合成</b>
-            <span>两个相互垂直的简谐振动。左右移动改变频率比，上下移动改变相位差。</span>
-            <output class="mono" data-lab-readout>ωx : ωy = 2 : 3</output>
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-        
-        <div class="block"><header class="block-head" data-reveal><h4>技术与工具</h4></header><div data-reveal><ul class="chips"><li>HTML5 Canvas</li><li>Three.js</li><li>WebGL</li><li>KaTeX</li><li>Node.js</li></ul></div></div>
-      </div>
+      
+      <div class="block"><header class="block-head"><h4>技术与工具</h4></header><ul class="chips"><li>HTML5 Canvas</li><li>Three.js</li><li>WebGL</li><li>KaTeX</li><li>Node.js</li></ul></div>
     </article>
     <article class="project" id="project-agents" aria-labelledby="project-agents-title">
-      <div class="project__poster wrap" data-cue="network">
-        <div class="project__intro" data-stagger>
-          <p class="project__kicker mono" data-reveal><b>P/03</b>自主搭建</p>
-          <h3 class="project__title" id="project-agents-title" data-reveal="mask"><span class="line"><span>多智能体</span></span><span class="line"><span>bot 团队</span></span></h3>
-          <p class="project__en" lang="en" data-reveal>Personal Multi-Agent Team</p>
-          <p class="project__summary" data-reveal>约 20 个 AI bot 分三条线协同，一人公司式工作流。</p>
-          <dl class="project__meta" data-reveal><div><dt class="mono">形态</dt><dd>一人公司式工作流</dd></div><div><dt class="mono">规模</dt><dd>约 20 个 AI bot · 三条线</dd></div></dl>
-          <p class="project__status" data-reveal><span class="pill pill--jade is-live"><i></i>持续使用中</span></p>
-          
-        </div>
-        <div class="project__slot" data-stage-anchor aria-hidden="true"></div>
-      </div>
-
-      <div class="project__detail wrap" data-cue="network" data-cue-mode="backdrop">
-        <ol class="facets" data-stagger>
-      <li class="facet" data-reveal data-spot>
+      <p class="project__kicker"><b>03</b>自主搭建</p>
+      <h3 class="project__title" id="project-agents-title"><span class="line">多智能体</span><span class="line">bot 团队</span></h3>
+      <p class="project__en" lang="en">Personal Multi-Agent Team</p>
+      <p class="project__summary">约 20 个 AI bot 分三条线协同，一人公司式工作流。</p>
+      <dl class="project__meta"><div><dt>形态</dt><dd>一人公司式工作流</dd></div><div><dt>规模</dt><dd>约 20 个 AI bot · 三条线</dd></div></dl>
+      <p class="project__status"><span class="pill">持续使用中</span></p>
+      
+      <ol class="facets">
+      <li class="facet">
         <div class="facet__head">
           <span class="facet__no mono">01</span>
           <h4 class="facet__label">架构</h4>
-          <span class="facet__en mono" lang="en">Architecture</span>
+          <span class="facet__en" lang="en">Architecture</span>
         </div>
         <p class="facet__text">约 20 个 AI bot，分龙珠项目、自媒体副业、日常事务三条线，各设协调 bot；龙珠线按开发、测试、运维、社区运营、宣传片发布等角色分工，执行 bot 只向协调 bot 汇报。</p>
-        <p class="facet__metric"><b>≈20</b><span class="mono">个 AI bot</span></p>
+        <p class="facet__metric"><b>≈20</b><span>个 AI bot</span></p>
       </li>
-      <li class="facet" data-reveal data-spot>
+      <li class="facet">
         <div class="facet__head">
           <span class="facet__no mono">02</span>
           <h4 class="facet__label">规则</h4>
-          <span class="facet__en mono" lang="en">Protocol</span>
+          <span class="facet__en" lang="en">Protocol</span>
         </div>
         <p class="facet__text">制定统一行为规范：少打扰、五态结构化汇报、「停止」跨重启有效、不可逆操作须人工批准。</p>
-        <p class="facet__metric"><b>4</b><span class="mono">条统一行为规范</span></p>
+        <p class="facet__metric"><b>4</b><span>条统一行为规范</span></p>
       </li></ol>
-        
-        
-        
-    <div class="block orgchart">
-      <header class="block-head" data-reveal><h4>汇报结构</h4><p class="mono">架构示意 · 节点数量为示意，总规模约 20 个 bot</p></header>
-      <div class="orgchart__canvas" data-orgchart-canvas data-reveal></div>
-      <p class="orgchart__legend" data-reveal>
-        <span class="orgchart__key orgchart__key--amber"></span>指令自上而下
-        <span class="orgchart__key orgchart__key--jade"></span>汇报自下而上
-        <span class="orgchart__tip">你光标后面跟着的那支队伍，就是照这张图编的队：协调者围着你，执行者只跟随各自的协调者。</span>
-      </p>
+      
+      
+    <div class="block">
+      <header class="block-head"><h4>汇报结构</h4><p>架构示意 · 节点数量为示意，总规模约 20 个 bot</p></header>
+      <div class="team">
+        <p class="team__human"><strong>我</strong> · 指挥 · 人工批准</p>
+        <ul><li>
+        <p><strong>龙珠项目</strong> · 开发、测试、运维、社区运营、宣传片发布</p>
+        <p class="muted">执行 bot 8 个（示意）</p>
+      </li><li>
+        <p><strong>自媒体副业</strong></p>
+        <p class="muted">执行 bot 5 个（示意）</p>
+      </li><li>
+        <p><strong>日常事务</strong></p>
+        <p class="muted">执行 bot 4 个（示意）</p>
+      </li></ul>
+      </div>
     </div>
     <div class="block">
-      <header class="block-head" data-reveal><h4>统一行为规范</h4><p class="mono">4 条</p></header>
-      <ol class="rules" data-stagger>
-      <li class="rule" data-reveal data-spot>
-        <span class="rule__no mono">规范 01</span>
+      <header class="block-head"><h4>统一行为规范</h4><p>4 条</p></header>
+      <ol class="rules">
+      <li class="rule">
+        <span class="rule__no mono">01</span>
         <b class="rule__title">少打扰</b>
-        <span class="rule__en mono" lang="en">Low Interruption</span>
+        <span class="rule__en" lang="en">Low Interruption</span>
       </li>
-      <li class="rule" data-reveal data-spot>
-        <span class="rule__no mono">规范 02</span>
+      <li class="rule">
+        <span class="rule__no mono">02</span>
         <b class="rule__title">五态结构化汇报</b>
-        <span class="rule__en mono" lang="en">Five-State Reports</span>
+        <span class="rule__en" lang="en">Five-State Reports</span>
       </li>
-      <li class="rule" data-reveal data-spot>
-        <span class="rule__no mono">规范 03</span>
+      <li class="rule">
+        <span class="rule__no mono">03</span>
         <b class="rule__title">「停止」跨重启有效</b>
-        <span class="rule__en mono" lang="en">Stop Survives Restart</span>
+        <span class="rule__en" lang="en">Stop Survives Restart</span>
       </li>
-      <li class="rule" data-reveal data-spot>
-        <span class="rule__no mono">规范 04</span>
+      <li class="rule">
+        <span class="rule__no mono">04</span>
         <b class="rule__title">不可逆操作须人工批准</b>
-        <span class="rule__en mono" lang="en">Human Approval for Irreversible Ops</span>
+        <span class="rule__en" lang="en">Human Approval for Irreversible Ops</span>
       </li></ol>
     </div>
-        
-      </div>
+      
     </article>
+      </div>
     </section>
 
     <section class="section competitions" id="competitions" aria-labelledby="competitions-title">
-      <div class="wrap comp-top" data-cue="galaxy">
-        <div class="comp-top__head">
-    <header class="sec-head" data-stagger>
-      <p class="sec-head__index mono" data-reveal>
-        <span class="orbs" aria-hidden="true"><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i></i><i></i><i></i></span>
-        <span>04 <i>/</i> 07</span>
-      </p>
-      <h2 class="sec-head__title" id="competitions-title">
-        <span class="sec-head__zh" data-split data-reveal="chars">竞赛</span>
-        <span class="sec-head__en" data-reveal>Competitions</span>
-      </h2>
-      <span class="sec-head__rule" data-reveal="line" aria-hidden="true"></span>
-      <p class="sec-head__lede" data-reveal>三项赛事，均在参赛中。</p>
-    </header></div>
-        <div class="comp-top__slot" data-stage-anchor aria-hidden="true"></div>
-      </div>
-      <ol class="comps wrap" data-cue="galaxy" data-cue-mode="backdrop" data-stagger>
+      <div class="wrap">
         
-    <li class="comp" data-reveal data-spot>
+    <header class="sec-head">
+      <p class="sec-head__index">04 <i>/</i> 07</p>
+      <h2 class="sec-head__title" id="competitions-title">
+        <span class="sec-head__zh">竞赛</span>
+        <span class="sec-head__en" lang="en">Competitions</span>
+      </h2>
+      <p class="sec-head__lede">三项赛事，均在参赛中。</p>
+    </header>
+        <ol class="comps">
+    <li class="comp">
       <div class="comp__head">
-        <span class="comp__no mono">C/01</span>
         <div class="comp__title">
           <h3 class="comp__name">第十四届全国大学生数字媒体科技作品及创意竞赛</h3>
-          <p class="comp__track mono">科幻+及元宇宙数字作品</p>
+          <p class="comp__track">科幻+及元宇宙数字作品</p>
         </div>
-        <span class="pill pill--jade is-live"><i></i>参赛中</span>
+        <span class="pill">参赛中</span>
       </div>
       
       <div class="comp__work">
         <div class="comp__work-head">
-          <p class="mono">参赛作品<i>·</i>团队作品</p>
+          <p>参赛作品 · 团队作品</p>
           <h4 class="comp__work-title">《创世纪元》<small>AI 文明诞生概率实验室</small></h4>
-          <div class="comp__work-link"><span class="btn is-soon" aria-disabled="true" data-cursor="待接入"><span class="btn__text">查看作品</span><span class="btn__tag mono">待接入</span></span></div>
+          <div class="comp__work-link"><span class="btn is-soon" aria-disabled="true"><span class="btn__text">查看作品</span><span class="btn__tag">待接入</span></span></div>
         </div>
         <div class="comp__work-body">
           <p>Web 3D 实时交互作品，以「知识即权限」机制让观众逐层调整物理常数、行星、生命到文明的参量，亲历文明诞生的低概率；确定性推演引擎计算全部数值，并接入大模型担任实验室讲解员。基于 TypeScript + Three.js + Vite 构建为离线单文件，Vitest 单元测试。团队作品，本人负责选题方向、技术路线与审定，以 AI 驱动开发。</p>
           <div class="flow">
-           <p class="mono">逐层调整的参量</p>
+           <p>逐层调整的参量</p>
            <ol><li>物理常数</li><li>行星</li><li>生命</li><li>文明</li></ol>
          </div>
           <ul class="chips"><li>TypeScript</li><li>Three.js</li><li>Vite</li><li>Vitest</li></ul>
         </div>
       </div>
     </li>
-    <li class="comp" data-reveal data-spot>
+    <li class="comp">
       <div class="comp__head">
-        <span class="comp__no mono">C/02</span>
         <div class="comp__title">
           <h3 class="comp__name">Spatial Joy 2026 Rokid 全球开发大赛</h3>
-          <p class="comp__track mono">AI 赛道（AIUI 智能体 · 学习类）</p>
+          <p class="comp__track">AI 赛道（AIUI 智能体 · 学习类）</p>
         </div>
-        <span class="pill pill--jade is-live"><i></i>参赛中</span>
+        <span class="pill">参赛中</span>
       </div>
       
       <div class="comp__work">
         <div class="comp__work-head">
-          <p class="mono">参赛作品<i>·</i>个人参赛</p>
+          <p>参赛作品 · 个人参赛</p>
           <h4 class="comp__work-title">《过目能讲》</h4>
-          <div class="comp__work-link"><span class="btn is-soon" aria-disabled="true" data-cursor="待接入"><span class="btn__text">查看作品</span><span class="btn__tag mono">待接入</span></span></div>
+          <div class="comp__work-link"><span class="btn is-soon" aria-disabled="true"><span class="btn__text">查看作品</span><span class="btn__tag">待接入</span></span></div>
         </div>
         <div class="comp__work-body">
           <p>基于费曼学习法的 AI 眼镜学习教练——拍下学习材料后用自己的话讲解，智能体对照要点诊断理解偏差、引导修正并请用户重讲验证。个人参赛，独立完成策划案与交互设计，基于 Rokid AIUI Studio 开发。</p>
           <div class="flow">
-           <p class="mono">一次学习闭环</p>
+           <p>一次学习闭环</p>
            <ol><li>拍下材料</li><li>用自己的话讲解</li><li>诊断偏差</li><li>引导修正</li><li>重讲验证</li></ol>
          </div>
           <ul class="chips"><li>Rokid AIUI Studio</li><li>费曼学习法</li></ul>
         </div>
       </div>
     </li>
-    <li class="comp" data-reveal data-spot>
+    <li class="comp">
       <div class="comp__head">
-        <span class="comp__no mono">C/03</span>
         <div class="comp__title">
           <h3 class="comp__name">大学生软件创新大赛</h3>
-          <p class="comp__track mono">软件开发与创新应用方向</p>
+          <p class="comp__track">软件开发与创新应用方向</p>
         </div>
-        <span class="pill pill--jade is-live"><i></i>参赛中</span>
+        <span class="pill">参赛中</span>
       </div>
       
-    </li>
-      </ol>
+    </li></ol>
+      </div>
     </section>
 
-    <section class="section skills" id="skills" data-cue="stack" aria-labelledby="skills-title">
+    <section class="section skills" id="skills" aria-labelledby="skills-title">
       <div class="wrap">
         
-    <header class="sec-head" data-stagger>
-      <p class="sec-head__index mono" data-reveal>
-        <span class="orbs" aria-hidden="true"><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i></i><i></i></span>
-        <span>05 <i>/</i> 07</span>
-      </p>
+    <header class="sec-head">
+      <p class="sec-head__index">05 <i>/</i> 07</p>
       <h2 class="sec-head__title" id="skills-title">
-        <span class="sec-head__zh" data-split data-reveal="chars">技能</span>
-        <span class="sec-head__en" data-reveal>Skills</span>
+        <span class="sec-head__zh">技能</span>
+        <span class="sec-head__en" lang="en">Skills</span>
       </h2>
-      <span class="sec-head__rule" data-reveal="line" aria-hidden="true"></span>
-      <p class="sec-head__lede" data-reveal>四个层面的工具与技术栈。</p>
+      <p class="sec-head__lede">四个层面的工具与技术栈。</p>
     </header>
-        <div class="skills__grid">
-          <div class="skills__visual">
-            <div class="skills__slot" data-stage-anchor aria-hidden="true"></div>
-            <p class="skills__hint mono">04 层 · 指向右侧任意一组，对应的那一层会亮起</p>
-          </div>
-          <ol class="skills__list" data-stagger>
-        <li class="skill" data-reveal data-spot data-skill="0" tabindex="0">
+        <ol class="skills__list">
+        <li class="skill">
           <div class="skill__head">
-            <span class="skill__no mono">L1</span>
+            <span class="skill__no mono">01</span>
             <h3 class="skill__title">AI 与多智能体</h3>
-            <span class="skill__en mono" lang="en">AI &amp; Multi-Agent</span>
+            <span class="skill__en" lang="en">AI &amp; Multi-Agent</span>
           </div>
           <p class="skill__text">熟练运用 Codex、Claude Code、DeepSeek、ChatGPT、Gemini 等，擅长 AI 驱动开发与多智能体编排。</p>
           <ul class="chips"><li>Codex</li><li>Claude Code</li><li>DeepSeek</li><li>ChatGPT</li><li>Gemini</li><li>AI 驱动开发</li><li>多智能体编排</li></ul>
         </li>
-        <li class="skill" data-reveal data-spot data-skill="1" tabindex="0">
+        <li class="skill">
           <div class="skill__head">
-            <span class="skill__no mono">L2</span>
+            <span class="skill__no mono">02</span>
             <h3 class="skill__title">网络与平台</h3>
-            <span class="skill__en mono" lang="en">Network &amp; Platform</span>
+            <span class="skill__en" lang="en">Network &amp; Platform</span>
           </div>
           <p class="skill__text">熟练使用 GitHub、Cloudflare；Linux（Ubuntu）服务器、Docker、翼龙面板、阿里云 OSS。</p>
           <ul class="chips"><li>GitHub</li><li>Cloudflare</li><li>Linux · Ubuntu</li><li>Docker</li><li>翼龙面板</li><li>阿里云 OSS</li></ul>
         </li>
-        <li class="skill" data-reveal data-spot data-skill="2" tabindex="0">
+        <li class="skill">
           <div class="skill__head">
-            <span class="skill__no mono">L3</span>
+            <span class="skill__no mono">03</span>
             <h3 class="skill__title">开发技术栈</h3>
-            <span class="skill__en mono" lang="en">Development Stack</span>
+            <span class="skill__en" lang="en">Development Stack</span>
           </div>
           <p class="skill__text">TypeScript、Three.js / WebGL、Vite、Vitest、HTML5 Canvas、KaTeX；Java 17 + Minecraft Forge 1.20.1 / Mohist、Gradle、JUnit / GameTest。</p>
           <ul class="chips"><li>TypeScript</li><li>Three.js</li><li>WebGL</li><li>Vite</li><li>Vitest</li><li>HTML5 Canvas</li><li>KaTeX</li><li>Java 17</li><li>Minecraft Forge 1.20.1</li><li>Mohist</li><li>Gradle</li><li>JUnit</li><li>GameTest</li></ul>
         </li>
-        <li class="skill" data-reveal data-spot data-skill="3" tabindex="0">
+        <li class="skill">
           <div class="skill__head">
-            <span class="skill__no mono">L4</span>
+            <span class="skill__no mono">04</span>
             <h3 class="skill__title">内容与其他</h3>
-            <span class="skill__en mono" lang="en">Content &amp; More</span>
+            <span class="skill__en" lang="en">Content &amp; More</span>
           </div>
           <p class="skill__text">B 站个人账号投稿，项目宣传片制作与发布；有一定外贸行业接触。</p>
           <ul class="chips"><li>B 站投稿</li><li>宣传片制作与发布</li><li>外贸行业接触</li></ul>
         </li></ol>
-        </div>
-      </div>
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee__track"><span>Codex</span><i>✦</i><span>Claude Code</span><i>✦</i><span>DeepSeek</span><i>✦</i><span>ChatGPT</span><i>✦</i><span>Gemini</span><i>✦</i><span>AI 驱动开发</span><i>✦</i><span>多智能体编排</span><i>✦</i><span>GitHub</span><i>✦</i><span>Cloudflare</span><i>✦</i><span>Linux · Ubuntu</span><i>✦</i><span>Docker</span><i>✦</i><span>翼龙面板</span><i>✦</i><span>阿里云 OSS</span><i>✦</i><span>TypeScript</span><i>✦</i><span>Three.js</span><i>✦</i><span>WebGL</span><i>✦</i><span>Vite</span><i>✦</i><span>Vitest</span><i>✦</i><span>HTML5 Canvas</span><i>✦</i><span>KaTeX</span><i>✦</i><span>Java 17</span><i>✦</i><span>Minecraft Forge 1.20.1</span><i>✦</i><span>Mohist</span><i>✦</i><span>Gradle</span><i>✦</i><span>JUnit</span><i>✦</i><span>GameTest</span><i>✦</i><span>B 站投稿</span><i>✦</i><span>宣传片制作与发布</span><i>✦</i><span>外贸行业接触</span><i>✦</i><span>Codex</span><i>✦</i><span>Claude Code</span><i>✦</i><span>DeepSeek</span><i>✦</i><span>ChatGPT</span><i>✦</i><span>Gemini</span><i>✦</i><span>AI 驱动开发</span><i>✦</i><span>多智能体编排</span><i>✦</i><span>GitHub</span><i>✦</i><span>Cloudflare</span><i>✦</i><span>Linux · Ubuntu</span><i>✦</i><span>Docker</span><i>✦</i><span>翼龙面板</span><i>✦</i><span>阿里云 OSS</span><i>✦</i><span>TypeScript</span><i>✦</i><span>Three.js</span><i>✦</i><span>WebGL</span><i>✦</i><span>Vite</span><i>✦</i><span>Vitest</span><i>✦</i><span>HTML5 Canvas</span><i>✦</i><span>KaTeX</span><i>✦</i><span>Java 17</span><i>✦</i><span>Minecraft Forge 1.20.1</span><i>✦</i><span>Mohist</span><i>✦</i><span>Gradle</span><i>✦</i><span>JUnit</span><i>✦</i><span>GameTest</span><i>✦</i><span>B 站投稿</span><i>✦</i><span>宣传片制作与发布</span><i>✦</i><span>外贸行业接触</span><i>✦</i></div>
       </div>
     </section>
 
     <section class="section portals" id="portals" aria-labelledby="portals-title">
-      <div class="wrap portals-top" data-cue="portal">
-        <div class="portals-top__slot" data-stage-anchor aria-hidden="true"></div>
-        
-    <header class="sec-head" data-stagger>
-      <p class="sec-head__index mono" data-reveal>
-        <span class="orbs" aria-hidden="true"><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i></i></span>
-        <span>06 <i>/</i> 07</span>
-      </p>
-      <h2 class="sec-head__title" id="portals-title">
-        <span class="sec-head__zh" data-split data-reveal="chars">传送门</span>
-        <span class="sec-head__en" data-reveal>Portals</span>
-      </h2>
-      <span class="sec-head__rule" data-reveal="line" aria-hidden="true"></span>
-      <p class="sec-head__lede" data-reveal>作品与内容的入口。已接入的可以直接前往，其余陆续开放。</p>
-    </header>
-      </div>
-      <ul class="portal-grid wrap" data-cue="portal" data-cue-mode="backdrop" data-stagger>
-        
-    <li class="portal-cell" style="--span:2" data-reveal>
-      <article class="portal is-soon" data-tilt="5" data-agent-target data-cursor="待接入">
-        <header class="portal__top mono">
-          <span>G/01</span>
-          <span class="portal__state"><i></i>待接入</span>
-        </header>
-        <div class="portal__ring" aria-hidden="true"><i></i><i></i></div>
-        <div class="portal__body">
-          <h3 class="portal__title">数字教材</h3>
-          <p class="portal__en" lang="en">Digital Textbook</p>
-          <p class="portal__desc">哈尔滨医科大学《医用物理学》交互演示网页：流体力学与振动波动。</p>
-          <ul class="portal__children"><li><span class="portal__child">泊肃叶定律</span></li><li><span class="portal__child">文丘里流量计</span></li><li><span class="portal__child">皮托管</span></li><li><span class="portal__child">虹吸现象</span></li><li><span class="portal__child">多普勒效应</span></li><li><span class="portal__child">简谐振动的合成</span></li></ul>
-        </div>
-        <footer class="portal__foot mono">
-          <span class="portal__url">地址待填写</span>
-          <span class="portal__arrow" aria-hidden="true">↗</span>
-        </footer>
-      </article>
-    </li>
-    <li class="portal-cell" style="--span:1" data-reveal>
-      <article class="portal is-live" data-tilt="5" data-agent-target data-cursor="前往 ↗">
-        <header class="portal__top mono">
-          <span>G/02</span>
-          <span class="portal__state"><i></i>已接入</span>
-        </header>
-        <div class="portal__ring" aria-hidden="true"><i></i><i></i></div>
-        <div class="portal__body">
-          <a class="portal__hit" href="https://space.bilibili.com/487167344" target="_blank" rel="noopener noreferrer" aria-label="前往 B 站主页"><h3 class="portal__title">B 站主页</h3></a>
-          <p class="portal__en" lang="en">Bilibili</p>
-          <p class="portal__desc">个人账号投稿与项目宣传片。</p>
-          
-        </div>
-        <footer class="portal__foot mono">
-          <span class="portal__url">space.bilibili.com/487167344</span>
-          <span class="portal__arrow" aria-hidden="true">↗</span>
-        </footer>
-      </article>
-    </li>
-    <li class="portal-cell" style="--span:1" data-reveal>
-      <article class="portal is-soon" data-tilt="5" data-agent-target data-cursor="待接入">
-        <header class="portal__top mono">
-          <span>G/03</span>
-          <span class="portal__state"><i></i>待接入</span>
-        </header>
-        <div class="portal__ring" aria-hidden="true"><i></i><i></i></div>
-        <div class="portal__body">
-          <h3 class="portal__title">祈愿龙珠</h3>
-          <p class="portal__en" lang="en">DragonMine Z</p>
-          <p class="portal__desc">基于 Minecraft 1.20.1 的龙珠主题魔改服务器。</p>
-          
-        </div>
-        <footer class="portal__foot mono">
-          <span class="portal__url">地址待填写</span>
-          <span class="portal__arrow" aria-hidden="true">↗</span>
-        </footer>
-      </article>
-    </li>
-    <li class="portal-cell" style="--span:1" data-reveal>
-      <article class="portal is-soon" data-tilt="5" data-agent-target data-cursor="待接入">
-        <header class="portal__top mono">
-          <span>G/04</span>
-          <span class="portal__state"><i></i>待接入</span>
-        </header>
-        <div class="portal__ring" aria-hidden="true"><i></i><i></i></div>
-        <div class="portal__body">
-          <h3 class="portal__title">创世纪元</h3>
-          <p class="portal__en" lang="en">Genesis Era</p>
-          <p class="portal__desc">AI 文明诞生概率实验室，Web 3D 实时交互作品。</p>
-          
-        </div>
-        <footer class="portal__foot mono">
-          <span class="portal__url">地址待填写</span>
-          <span class="portal__arrow" aria-hidden="true">↗</span>
-        </footer>
-      </article>
-    </li>
-    <li class="portal-cell" style="--span:1" data-reveal>
-      <article class="portal is-soon" data-tilt="5" data-agent-target data-cursor="待接入">
-        <header class="portal__top mono">
-          <span>G/05</span>
-          <span class="portal__state"><i></i>待接入</span>
-        </header>
-        <div class="portal__ring" aria-hidden="true"><i></i><i></i></div>
-        <div class="portal__body">
-          <h3 class="portal__title">过目能讲</h3>
-          <p class="portal__en" lang="en">Explain It Back</p>
-          <p class="portal__desc">基于费曼学习法的 AI 眼镜学习教练。</p>
-          
-        </div>
-        <footer class="portal__foot mono">
-          <span class="portal__url">地址待填写</span>
-          <span class="portal__arrow" aria-hidden="true">↗</span>
-        </footer>
-      </article>
-    </li>
-    <li class="portal-cell" style="--span:1" data-reveal>
-      <article class="portal is-soon" data-tilt="5" data-agent-target data-cursor="待接入">
-        <header class="portal__top mono">
-          <span>G/06</span>
-          <span class="portal__state"><i></i>待接入</span>
-        </header>
-        <div class="portal__ring" aria-hidden="true"><i></i><i></i></div>
-        <div class="portal__body">
-          <h3 class="portal__title">视频作品</h3>
-          <p class="portal__en" lang="en">Videos</p>
-          <p class="portal__desc">项目宣传片与视频内容合集。</p>
-          
-        </div>
-        <footer class="portal__foot mono">
-          <span class="portal__url">地址待填写</span>
-          <span class="portal__arrow" aria-hidden="true">↗</span>
-        </footer>
-      </article>
-    </li>
-    <li class="portal-cell" style="--span:1" data-reveal>
-      <article class="portal is-soon" data-tilt="5" data-agent-target data-cursor="待接入">
-        <header class="portal__top mono">
-          <span>G/07</span>
-          <span class="portal__state"><i></i>待接入</span>
-        </header>
-        <div class="portal__ring" aria-hidden="true"><i></i><i></i></div>
-        <div class="portal__body">
-          <h3 class="portal__title">GitHub</h3>
-          <p class="portal__en" lang="en">GitHub</p>
-          <p class="portal__desc">代码仓库。</p>
-          
-        </div>
-        <footer class="portal__foot mono">
-          <span class="portal__url">地址待填写</span>
-          <span class="portal__arrow" aria-hidden="true">↗</span>
-        </footer>
-      </article>
-    </li>
-      </ul>
-    </section>
-
-    <section class="section contact" id="contact" data-cue="contact" aria-labelledby="contact-title">
       <div class="wrap">
         
-    <header class="sec-head" data-stagger>
-      <p class="sec-head__index mono" data-reveal>
-        <span class="orbs" aria-hidden="true"><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i><i class="is-lit"></i></span>
-        <span>07 <i>/</i> 07</span>
-      </p>
-      <h2 class="sec-head__title" id="contact-title">
-        <span class="sec-head__zh" data-split data-reveal="chars">联系</span>
-        <span class="sec-head__en" data-reveal>Contact</span>
+    <header class="sec-head">
+      <p class="sec-head__index">06 <i>/</i> 07</p>
+      <h2 class="sec-head__title" id="portals-title">
+        <span class="sec-head__zh">传送门</span>
+        <span class="sec-head__en" lang="en">Portals</span>
       </h2>
-      <span class="sec-head__rule" data-reveal="line" aria-hidden="true"></span>
+      <p class="sec-head__lede">作品与内容的入口。已接入的可以直接前往，其余陆续开放。</p>
+    </header>
+        <ul class="portal-list">
+    <li class="portal">
+      <header class="portal__top">
+        <span class="mono">Digital Textbook</span>
+        <span class="mono">待接入</span>
+      </header>
+      <h3 class="portal__title">数字教材</h3>
+      <p class="portal__desc">哈尔滨医科大学《医用物理学》交互演示网页：流体力学与振动波动。</p>
+      <ul class="portal__children"><li><span class="portal__child">泊肃叶定律</span></li><li><span class="portal__child">文丘里流量计</span></li><li><span class="portal__child">皮托管</span></li><li><span class="portal__child">虹吸现象</span></li><li><span class="portal__child">多普勒效应</span></li><li><span class="portal__child">简谐振动的合成</span></li></ul>
+      <p class="portal__url mono">地址待填写</p>
+    </li>
+    <li class="portal">
+      <header class="portal__top">
+        <span class="mono">Bilibili</span>
+        <span class="mono">已接入</span>
+      </header>
+      <h3 class="portal__title"><a href="https://space.bilibili.com/487167344" target="_blank" rel="noopener noreferrer">B 站主页</a></h3>
+      <p class="portal__desc">个人账号投稿与项目宣传片。</p>
+      
+      <p class="portal__url mono">space.bilibili.com/487167344</p>
+    </li>
+    <li class="portal">
+      <header class="portal__top">
+        <span class="mono">DragonMine Z</span>
+        <span class="mono">待接入</span>
+      </header>
+      <h3 class="portal__title">祈愿龙珠</h3>
+      <p class="portal__desc">基于 Minecraft 1.20.1 的龙珠主题魔改服务器。</p>
+      
+      <p class="portal__url mono">地址待填写</p>
+    </li>
+    <li class="portal">
+      <header class="portal__top">
+        <span class="mono">Genesis Era</span>
+        <span class="mono">待接入</span>
+      </header>
+      <h3 class="portal__title">创世纪元</h3>
+      <p class="portal__desc">AI 文明诞生概率实验室，Web 3D 实时交互作品。</p>
+      
+      <p class="portal__url mono">地址待填写</p>
+    </li>
+    <li class="portal">
+      <header class="portal__top">
+        <span class="mono">Explain It Back</span>
+        <span class="mono">待接入</span>
+      </header>
+      <h3 class="portal__title">过目能讲</h3>
+      <p class="portal__desc">基于费曼学习法的 AI 眼镜学习教练。</p>
+      
+      <p class="portal__url mono">地址待填写</p>
+    </li>
+    <li class="portal">
+      <header class="portal__top">
+        <span class="mono">Videos</span>
+        <span class="mono">待接入</span>
+      </header>
+      <h3 class="portal__title">视频作品</h3>
+      <p class="portal__desc">项目宣传片与视频内容合集。</p>
+      
+      <p class="portal__url mono">地址待填写</p>
+    </li>
+    <li class="portal">
+      <header class="portal__top">
+        <span class="mono">GitHub</span>
+        <span class="mono">待接入</span>
+      </header>
+      <h3 class="portal__title">GitHub</h3>
+      <p class="portal__desc">代码仓库。</p>
+      
+      <p class="portal__url mono">地址待填写</p>
+    </li></ul>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        
+    <header class="sec-head">
+      <p class="sec-head__index">07 <i>/</i> 07</p>
+      <h2 class="sec-head__title" id="contact-title">
+        <span class="sec-head__zh">联系</span>
+        <span class="sec-head__en" lang="en">Contact</span>
+      </h2>
       
     </header>
-        <div class="contact__grid">
-          <div class="contact__body" data-stagger>
-            <p class="contact__headline" data-reveal="mask"><span class="line"><span>把下一个想法，</span></span><span class="line"><span>做成产品。</span></span></p>
-            <p class="contact__text" data-reveal>正在寻找 AI Agent 应用工程师（智能体应用工程师）方向的机会，欢迎来信。</p>
-            <div class="contact__mail" data-reveal>
-              <a class="mail" href="mailto:tziquantum@gmail.com" data-cursor="写邮件" data-agent-target>
-                <span class="mono">邮箱</span>
-                <b>tziquantum@gmail.com</b>
-              </a>
-              <button type="button" class="btn" data-copy="tziquantum@gmail.com" data-magnetic="0.25">
-                <span class="btn__text">复制邮箱</span>
-              </button>
-            </div>
-            <ul class="contact__links" data-reveal><li><a href="https://space.bilibili.com/487167344" target="_blank" rel="noopener noreferrer" data-magnetic="0.2"><span>B 站主页</span><i aria-hidden="true">↗</i></a></li></ul>
-          </div>
-          <div class="contact__slot" data-stage-anchor aria-hidden="true"></div>
+        <p class="contact__headline"><span class="line">把下一个想法，</span><span class="line">做成产品。</span></p>
+        <p class="contact__text">正在寻找 AI Agent 应用工程师（智能体应用工程师）方向的机会，欢迎来信。</p>
+        <div class="contact__mail">
+          <a class="mail" href="mailto:tziquantum@gmail.com">
+            <span class="mono">邮箱</span>
+            <b>tziquantum@gmail.com</b>
+          </a>
+          <button type="button" class="btn" data-copy="tziquantum@gmail.com">复制邮箱</button>
         </div>
+        <ul class="contact__links"><li><a href="https://space.bilibili.com/487167344" target="_blank" rel="noopener noreferrer">B 站主页</a></li></ul>
+        <footer class="footer">
+          <p>© 2026 李牧唐 · AI Agent 应用工程师</p>
+          <a href="#top">回到顶部</a>
+        </footer>
       </div>
-
-      <footer class="footer wrap">
-        <div class="footer__row">
-          <p class="footer__sign"><span class="nav__orb" aria-hidden="true"></span>李牧唐<i>·</i>AI Agent 应用工程师</p>
-          <a class="footer__top mono" href="#top">回到顶部 ↑</a>
-        </div>
-        <div class="footer__row footer__meta mono">
-          <p>© 2026 李牧唐</p>
-          <p class="footer__travel">本次访问，智能体随你的光标移动了 <b data-hud="travel">0.0</b> 米</p>
-          <p>以 AI 驱动开发构建 · 手写 WebGL2 粒子引擎 · 零依赖</p>
-        </div>
-      </footer>
     </section>
 <!-- /prerender:app --></main>
-
-  <!-- 跟随光标的智能体群 + 自定义光标 -->
-  <canvas class="fx-flock" id="fx-flock" aria-hidden="true"></canvas>
-  <div class="cursor" id="cursor" aria-hidden="true">
-    <svg class="cursor__ring" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20"/></svg>
-    <i class="cursor__dot"></i>
-    <span class="cursor__label"></span>
-  </div>
 
   <script type="module" src="./src/main.js" onerror="document.documentElement.classList.add('is-static')"></script>
 </body>
