@@ -16,91 +16,29 @@
   <meta property="og:image" content="./assets/img/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="./assets/img/favicon.svg?v=20261112c" type="image/svg+xml">
-  <link rel="preload" href="./assets/fonts/noto-serif-sc-900.woff2?v=20261112c" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/fonts/noto-serif-sc-900.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="./src/styles/fonts.css?v=20261112c">
-  <link rel="stylesheet" href="./src/styles/tokens.css?v=20261112c">
-  <link rel="stylesheet" href="./src/styles/base.css?v=20261112c">
-  <link rel="stylesheet" href="./src/styles/components.css?v=20261112c">
-  <link rel="stylesheet" href="./src/styles/chrome.css?v=20261112c">
-  <link rel="stylesheet" href="./src/styles/sections.css?v=20261112c">
-  <link rel="stylesheet" href="./src/styles/print.css?v=20261112c" media="print">
+  <link rel="stylesheet" href="./src/styles/fonts.css">
+  <link rel="stylesheet" href="./src/styles/tokens.css">
+  <link rel="stylesheet" href="./src/styles/base.css">
+  <link rel="stylesheet" href="./src/styles/components.css">
+  <link rel="stylesheet" href="./src/styles/chrome.css">
+  <link rel="stylesheet" href="./src/styles/sections.css">
+  <link rel="stylesheet" href="./src/styles/print.css" media="print">
 
   <script>
-    /* 尽早执行：标记脚本可用、file:// 降级、缓存戳、加载层硬超时。 */
+    /* 尽早执行的三件小事：标记脚本可用；识别「本地直接双击打开」；给启动过程上一道保险。 */
     (function () {
       var root = document.documentElement;
-      var VERSION = '20261112c';
       root.classList.remove('no-js');
       root.classList.add('js');
       // file:// 下浏览器不允许加载 ES 模块：直接展示静态版，并提示如何看完整效果
       if (location.protocol === 'file:') root.classList.add('is-static'); // standalone:strip
-
-      // 给每个模块 URL 加上 ?v=，避免回滚或更新后新旧脚本被缓存混在一起
-      var files = [
-        'main.js',
-        'content/site.js',
-        'core/bus.js',
-        'core/dom.js',
-        'core/env.js',
-        'core/math.js',
-        'core/pointer.js',
-        'core/scroll.js',
-        'core/ticker.js',
-        'fx/cues.js',
-        'fx/director.js',
-        'fx/field.js',
-        'fx/flock.js',
-        'fx/formations.js',
-        'fx/shaders.js',
-        'fx/stage.js',
-        'sections/about.js',
-        'sections/competitions.js',
-        'sections/contact.js',
-        'sections/education.js',
-        'sections/hero.js',
-        'sections/index.js',
-        'sections/portals.js',
-        'sections/projects.js',
-        'sections/shared.js',
-        'sections/skills.js',
-        'sections/widgets/orgchart.js',
-        'sections/widgets/wavelab.js',
-        'ui/cursor.js',
-        'ui/hud.js',
-        'ui/interact.js',
-        'ui/loader.js',
-        'ui/motion.js',
-        'ui/nav.js',
-        'ui/palette.js',
-        'ui/toast.js'
-      ];
-      var imports = {};
-      for (var i = 0; i < files.length; i++) {
-        var abs = new URL('./src/' + files[i], location.href).href;
-        imports[abs] = abs + (abs.indexOf('?') >= 0 ? '&' : '?') + 'v=' + VERSION;
-      }
-      var map = document.createElement('script');
-      map.type = 'importmap';
-      map.textContent = JSON.stringify({ imports: imports });
-      document.head.appendChild(map);
-
-      // 加载层必须结束：不依赖 __lmt（旧版简洁脚本也会设置它却不拆除加载层）
-      function failSafe(reason) {
-        if (root.classList.contains('is-ready')) return;
-        var loader = document.getElementById('loader');
-        if (loader && !loader.classList.contains('is-done')) loader.remove();
-        if (!window.__lmt) {
-          root.classList.add('is-ready', 'is-static');
-          root.classList.remove('is-armed');
-        } else {
-          root.classList.add('is-ready');
-        }
-      }
-      window.addEventListener('error', function (e) { failSafe(e && e.message ? e.message : 'error'); });
-      window.addEventListener('unhandledrejection', function (e) { failSafe((e && e.reason) || 'unhandledrejection'); });
-      setTimeout(function () { failSafe('timeout'); }, 8000);
+      // 12 秒内主脚本还没启动（断网等）：回退到静态内容，不让访客对着加载页干等
+      setTimeout(function () {
+        if (!window.__lmt) root.classList.add('is-static');
+      }, 12000);
     })();
   </script>
 
@@ -130,42 +68,42 @@
 </script>
 <!-- /prerender:schema -->
 
-  <link rel="modulepreload" href="./src/main.js?v=20261112c">
-  <link rel="modulepreload" href="./src/content/site.js?v=20261112c">
-  <link rel="modulepreload" href="./src/core/dom.js?v=20261112c">
-  <link rel="modulepreload" href="./src/core/env.js?v=20261112c">
-  <link rel="modulepreload" href="./src/core/bus.js?v=20261112c">
-  <link rel="modulepreload" href="./src/core/math.js?v=20261112c">
-  <link rel="modulepreload" href="./src/core/ticker.js?v=20261112c">
-  <link rel="modulepreload" href="./src/core/pointer.js?v=20261112c">
-  <link rel="modulepreload" href="./src/core/scroll.js?v=20261112c">
-  <link rel="modulepreload" href="./src/fx/stage.js?v=20261112c">
-  <link rel="modulepreload" href="./src/fx/field.js?v=20261112c">
-  <link rel="modulepreload" href="./src/fx/shaders.js?v=20261112c">
-  <link rel="modulepreload" href="./src/fx/formations.js?v=20261112c">
-  <link rel="modulepreload" href="./src/fx/director.js?v=20261112c">
-  <link rel="modulepreload" href="./src/fx/cues.js?v=20261112c">
-  <link rel="modulepreload" href="./src/fx/flock.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/index.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/shared.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/hero.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/about.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/education.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/projects.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/competitions.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/skills.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/portals.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/contact.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/widgets/orgchart.js?v=20261112c">
-  <link rel="modulepreload" href="./src/sections/widgets/wavelab.js?v=20261112c">
-  <link rel="modulepreload" href="./src/ui/loader.js?v=20261112c">
-  <link rel="modulepreload" href="./src/ui/nav.js?v=20261112c">
-  <link rel="modulepreload" href="./src/ui/palette.js?v=20261112c">
-  <link rel="modulepreload" href="./src/ui/motion.js?v=20261112c">
-  <link rel="modulepreload" href="./src/ui/interact.js?v=20261112c">
-  <link rel="modulepreload" href="./src/ui/cursor.js?v=20261112c">
-  <link rel="modulepreload" href="./src/ui/hud.js?v=20261112c">
-  <link rel="modulepreload" href="./src/ui/toast.js?v=20261112c">
+  <link rel="modulepreload" href="./src/main.js">
+  <link rel="modulepreload" href="./src/content/site.js">
+  <link rel="modulepreload" href="./src/core/dom.js">
+  <link rel="modulepreload" href="./src/core/env.js">
+  <link rel="modulepreload" href="./src/core/bus.js">
+  <link rel="modulepreload" href="./src/core/math.js">
+  <link rel="modulepreload" href="./src/core/ticker.js">
+  <link rel="modulepreload" href="./src/core/pointer.js">
+  <link rel="modulepreload" href="./src/core/scroll.js">
+  <link rel="modulepreload" href="./src/fx/stage.js">
+  <link rel="modulepreload" href="./src/fx/field.js">
+  <link rel="modulepreload" href="./src/fx/shaders.js">
+  <link rel="modulepreload" href="./src/fx/formations.js">
+  <link rel="modulepreload" href="./src/fx/director.js">
+  <link rel="modulepreload" href="./src/fx/cues.js">
+  <link rel="modulepreload" href="./src/fx/flock.js">
+  <link rel="modulepreload" href="./src/sections/index.js">
+  <link rel="modulepreload" href="./src/sections/shared.js">
+  <link rel="modulepreload" href="./src/sections/hero.js">
+  <link rel="modulepreload" href="./src/sections/about.js">
+  <link rel="modulepreload" href="./src/sections/education.js">
+  <link rel="modulepreload" href="./src/sections/projects.js">
+  <link rel="modulepreload" href="./src/sections/competitions.js">
+  <link rel="modulepreload" href="./src/sections/skills.js">
+  <link rel="modulepreload" href="./src/sections/portals.js">
+  <link rel="modulepreload" href="./src/sections/contact.js">
+  <link rel="modulepreload" href="./src/sections/widgets/orgchart.js">
+  <link rel="modulepreload" href="./src/sections/widgets/wavelab.js">
+  <link rel="modulepreload" href="./src/ui/loader.js">
+  <link rel="modulepreload" href="./src/ui/nav.js">
+  <link rel="modulepreload" href="./src/ui/palette.js">
+  <link rel="modulepreload" href="./src/ui/motion.js">
+  <link rel="modulepreload" href="./src/ui/interact.js">
+  <link rel="modulepreload" href="./src/ui/cursor.js">
+  <link rel="modulepreload" href="./src/ui/hud.js">
+  <link rel="modulepreload" href="./src/ui/toast.js">
 </head>
 <body>
   <a class="skip" href="#app">跳到正文</a>
@@ -942,6 +880,6 @@
     <span class="cursor__label"></span>
   </div>
 
-  <script type="module" src="./src/main.js?v=20261112c" onerror="document.documentElement.classList.add('is-ready','is-static');var l=document.getElementById('loader');if(l)l.remove();"></script>
+  <script type="module" src="./src/main.js" onerror="document.documentElement.classList.add('is-static')"></script>
 </body>
 </html>

@@ -28,7 +28,6 @@ export function defaultParams() {
   return {
     time: 0,
     morph: 1,
-    lite: 0,
     modelFrom: mat4.create(),
     modelTo: mat4.create(),
     waveFrom: [0, 0, 0, 0],
@@ -405,7 +404,6 @@ export class Field {
     gl.uniform1f(s.uTime, p.time);
     gl.uniform1f(s.uDt, dt);
     gl.uniform1f(s.uMorph, p.morph);
-    gl.uniform1f(s.uLite, p.lite);
     gl.uniformMatrix4fv(s.uModelFrom, false, p.modelFrom);
     gl.uniformMatrix4fv(s.uModelTo, false, p.modelTo);
     gl.uniform4fv(s.uWaveFrom, p.waveFrom);
@@ -476,8 +474,6 @@ export class Field {
     gl.uniform1f(d.uFollow, p.follow);
     gl.uniform1f(d.uFollowFrac, p.followFrac);
     gl.uniform1f(d.uMaxPoint, Math.min(this.maxPoint, 72 * this.pixelRatio));
-    gl.uniform1f(d.uMorph, p.morph);
-    gl.uniform1f(d.uLite, p.lite);
     gl.bindVertexArray(this.vao[this.read]);
     gl.drawArrays(gl.POINTS, 0, count);
     gl.disable(gl.BLEND);

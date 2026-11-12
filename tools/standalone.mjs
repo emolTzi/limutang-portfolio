@@ -27,8 +27,7 @@ async function main() {
   /* 1 ── 样式：按 index.html 里的顺序合并，字体转成 data URI */
   let css = '';
   for (const match of html.matchAll(/<link rel="stylesheet" href="\.\/([^"]+)"(?: media="([^"]+)")?>/g)) {
-    const [, raw, media] = match;
-    const file = raw.split('?')[0];
+    const [, file, media] = match;
     let text = await read(file);
     for (const [found, asset] of text.matchAll(/url\("\.\.\/\.\.\/(assets\/fonts\/[^"]+)"\)/g)) {
       text = text.replace(found, `url("${await dataUri(asset, 'font/woff2')}")`);

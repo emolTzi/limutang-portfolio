@@ -27,7 +27,6 @@ layout(location = 4) in vec4 aTo;
 uniform float uTime;
 uniform float uDt;
 uniform float uMorph;        // 0→1 编队切换进度
-uniform float uLite;         // 1 = 减少动态效果：瞬时交叉淡化
 uniform mat4 uModelFrom;     // 两个编队各自的摆放矩阵
 uniform mat4 uModelTo;
 uniform vec4 uWaveFrom;      // 波纹：振幅, 波数, 角频率
@@ -83,37 +82,24 @@ void main() {
   vec3 vel = aVel.xyz;
   float heat = aPos.w;
 
-  // —— 目标点：切换时原地呼吸淡出，再在新位置渐显，不在两点之间飞行 ——
-  // 与 DRAW_VS 里的时间窗口保持一致。
-  float delay = aSeed.x * 0.32;
-  float outA, outB, inA, inB;
-  if (uLite > 0.5) {
-    outA = 0.0; outB = 0.5;
-    inA = 0.5;  inB = 1.0;
-  } else {
-    outA = delay * 0.35;
-    outB = 0.38 + delay * 0.12;
-    inA  = 0.52 + delay * 0.32;
-    inB  = inA + 0.34;
-  }
-  float fadeOut = 1.0 - smoothstep(outA, max(outA + 1e-4, outB), uMorph);
-  float fadeIn  = smoothstep(inA, max(inA + 1e-4, inB), uMorph);
-  float onB = step(inA, uMorph);
-  float vis = max(fadeOut, fadeIn);
-  float k = fadeIn; // 供绘制阶段判断当前属于新编队
+  // —— 目标点：按个体随机延迟，从旧编队过渡到新编队 ——
+  float delay = aSeed.x * 0.55;
+  float k = smoothstep(delay, delay + 0.45, uMorph);
   vec3 a = (uModelFrom * vec4(ripple(aFrom.xyz, uWaveFrom, uTime), 1.0)).xyz;
   vec3 b = (uModelTo * vec4(ripple(aTo.xyz, uWaveTo, uTime), 1.0)).xyz;
-  vec3 target = mix(a, b, onB);
-  // 切入新编队的瞬间传送到位并清零速度，避免弹簧把粒子拉过去
-  if (onB > 0.5 && fadeIn < 0.4) {
-    pos = b;
-    vel = vec3(0.0);
-  }
+  vec3 target = mix(a, b, k);
+  float transit = sin(k * PI);
+
+  // 迁移途中走弧线而不是直线
+  vec3 span = b - a;
+  float dist = length(span);
+  vec3 side = normalize(cross(span, vec3(0.0, 0.0, 1.0)) + vec3(1e-4, 0.0, 0.0));
+  target += side * transit * (aSeed.y - 0.5) * dist * uArc;
+  target.z += transit * (aSeed.z - 0.35) * dist * uArc * 0.8;
   target += flow(target * 1.3, uTime * 0.6) * uBreath;
 
   // —— 追随者：一小部分粒子脱离编队，绕着指针飞 ——
-  // 切换过程中（粒子几乎看不见时）不要跟着乱飞
-  float follower = step(aSeed.w, uFollowFrac) * uFollow * vis;
+  float follower = step(aSeed.w, uFollowFrac) * uFollow;
   if (follower > 0.0) {
     float dir = aSeed.y > 0.5 ? 1.0 : -1.0;
     float ang = uTime * (0.7 + aSeed.x * 2.6) * dir + aSeed.z * TAU;
@@ -127,7 +113,7 @@ void main() {
   kS = mix(kS, 26.0 * mix(0.3, 1.2, aSeed.x), follower);
   vec3 acc = (target - pos) * kS;
 
-  acc += flow(pos * 1.1 + aSeed.xyz * 0.4, uTime) * uTurb;
+  acc += flow(pos * 1.1 + aSeed.xyz * 0.4, uTime) * uTurb * (1.0 + transit * 2.5);
 
   // 指针：以「到指针射线的距离」衰减，所以任何深度的粒子都会被拨动
   vec3 w = pos - uRayO;
@@ -216,8 +202,6 @@ uniform vec3 uColHot;
 uniform float uFollow;
 uniform float uFollowFrac;
 uniform float uMaxPoint;
-uniform float uMorph;        // 与模拟阶段相同的编队切换进度
-uniform float uLite;         // 1 = 减少动态效果：瞬时交叉淡化
 
 out vec3 vColor;
 out float vBokeh;
@@ -235,25 +219,7 @@ void main() {
   float point = clamp(diam, 1.0, uMaxPoint);
   gl_PointSize = point;
 
-  // 与 SIM_VS 相同的淡出 / 渐显窗口
-  float delay = aSeed.x * 0.32;
-  float outA, outB, inA, inB;
-  if (uLite > 0.5) {
-    outA = 0.0; outB = 0.5;
-    inA = 0.5;  inB = 1.0;
-  } else {
-    outA = delay * 0.35;
-    outB = 0.38 + delay * 0.12;
-    inA  = 0.52 + delay * 0.32;
-    inB  = inA + 0.34;
-  }
-  float fadeOut = 1.0 - smoothstep(outA, max(outA + 1e-4, outB), uMorph);
-  float fadeIn  = smoothstep(inA, max(inA + 1e-4, inB), uMorph);
-  float vis = max(fadeOut, fadeIn);
-  float pulseT = smoothstep(outA, max(outA + 1e-4, outB), uMorph);
-  float pulse = (uLite > 0.5) ? 0.0 : fadeOut * sin(pulseT * 3.14159265359);
-
-  float follower = step(aSeed.w, uFollowFrac) * uFollow * vis;
+  float follower = step(aSeed.w, uFollowFrac) * uFollow;
   float speed = length(aVel.xyz);
   float heat = clamp(aPos.w + speed * 0.35, 0.0, 1.6);
 
@@ -267,17 +233,14 @@ void main() {
   float sub = min(1.0, diam * diam);                  // 小于 1 像素时按面积变暗
   float twinkle = 0.72 + 0.28 * sin(uTime * (0.6 + aSeed.x * 2.2) + aSeed.y * 6.2831853);
 
-  float group = mix(aFrom.w, aTo.w, step(0.5, fadeIn));
+  float group = mix(aFrom.w, aTo.w, step(0.5, aVel.w));
   float match = 1.0 - step(0.5, abs(group - uGroup));
   float focusGain = mix(1.0, mix(0.22, 2.1, match), uGroupAmt * step(0.0, uGroup));
 
   float dim = mix(uDim, max(uDim, 0.85), follower);
-  float a = uAlpha * dim * energy * sub * twinkle * focusGain * (1.0 + heat * 1.3) * vis;
+  float a = uAlpha * dim * energy * sub * twinkle * focusGain * (1.0 + heat * 1.3);
 
-  // 淡出时轻轻胀一下，再回到零；渐显时从稍小的光点长到正常大小
-  gl_PointSize = point * (1.0 + pulse * 0.7) * mix(0.7, 1.0, max(fadeOut, fadeIn));
-
-  vColor = col * a * (1.0 + pulse * 0.35);
+  vColor = col * a;
   vBokeh = smoothstep(4.0, 16.0, point);
 }
 `;

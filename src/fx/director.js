@@ -129,8 +129,7 @@ export class Director {
     this.prev = this.cur || entry;
     this.cur = entry;
     this.morph = 0;
-    // 减少动态效果时改为瞬时交叉淡化；正常情况仍按预设时长做「淡出再渐显」
-    this.duration = this.env.lite ? 0.16 : entry.cfg.duration;
+    this.duration = entry.cfg.duration * (this.env.lite ? 0.5 : 1);
     this.field.setPair(this.prev.cfg.formation, entry.cfg.formation);
     bus.emit('cue', { name: entry.name, mode: entry.mode });
   }
@@ -202,7 +201,6 @@ export class Director {
     const ptr = this.pointer;
     const lite = this.env.lite;
     p.time = time;
-    p.lite = lite ? 1 : 0;
 
     /* 1 ── 当前预设 */
     if (this.live) {
