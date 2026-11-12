@@ -50,7 +50,8 @@ export function createLoader({ total = 20, still = false } = {}) {
       target = 1;
       const wait = MIN_TIME - (performance.now() - startedAt);
       if (wait > 0) await sleep(wait);
-      while (shown < 0.985) await sleep(40);
+      const deadline = performance.now() + 800;
+      while (shown < 0.985 && performance.now() < deadline) await sleep(40);
       // 淡出一开始就返回，让粒子的汇聚和幕布的揭开同时发生
       node.classList.add('is-done');
       setTimeout(() => {

@@ -82,12 +82,22 @@ async function boot() {
   // 6 ── 开场
   await loader.finish();
   root.classList.add('is-ready');
+  root.classList.remove('is-static');
   ctx.stage.start();
 }
 
-boot().catch((err) => {
-  console.error('[main] 启动失败，已切换为静态页面', err);
+function fallback(err) {
+  console.error('[main] 启动失败或超时，已显示页面内容', err);
   root.classList.remove('is-armed');
   root.classList.add('is-ready', 'is-static', 'no-gl');
   $('#loader')?.remove();
-});
+}
+
+const BOOT_DEADLINE_MS = 8000;
+let bootTimer = 0;
+Promise.race([
+  boot(),
+  new Promise((_, reject) => {
+    bootTimer = setTimeout(() => reject(new Error('boot timeout')), BOOT_DEADLINE_MS);
+  }),
+]).then(() => clearTimeout(bootTimer)).catch(fallback);
